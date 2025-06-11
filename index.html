@@ -69,40 +69,44 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
     <script src="js/main.js" defer></script>
   </head>
   <body>
-    <!-- Main content -->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo">
+          <img src="images/logo_kedos.png" alt="Logo" class="nav__logo-img" />
+        </a>
+
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li>
+              <a href="#home" class="nav__link">Home</a>
+            </li>
+
+            <li>
+              <a href="#kedos" class="nav__link">Scopri Kedos</a>
+            </li>
+
+            <li>
+              <a href="#configura" class="nav__link">Configura Ora</a>
+            </li>
+
+            <li>
+              <a href="#contattaci" class="nav__link">Contattaci</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="ri-menu-line"></i>
+        </div>
+      </nav>
+    </header>
+
     <main class="main">
-      <header class="header" id="header">
-        <nav class="nav container">
-          <a href="#" class="nav__logo">
-            <img src="images/logo_kedos.png" alt="Logo" class="nav__logo-img" />
-          </a>
-
-          <div class="nav__menu" id="nav-menu">
-            <ul class="nav__list">
-              <li>
-                <a href="#home" class="nav__link">Home</a>
-              </li>
-
-              <li>
-                <a href="#kedos" class="nav__link">Scopri Kedos</a>
-              </li>
-
-              <li>
-                <a href="#configura" class="nav__link">Configura Ora</a>
-              </li>
-
-              <li>
-                <a href="#contattaci" class="nav__link">Contattaci</a>
-              </li>
-            </ul>
-
-          </div>
-
-          <div class="nav__toggle" id="nav-toggle">
-            <i class="ri-menu-line"></i>
-          </div>
-        </nav>
-      </header>
+      <section class="hero section" id="hero">
+        <div class="hero__content container">
+          <h1 class="hero__title">Il configuratore <span>KeCert <sup>&#174;</sup></span>: la soluzione facile per certificati blockchain</h1>
+        </div>
+      </section>
     </main>
   </body>
 </html>
