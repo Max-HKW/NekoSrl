@@ -11,7 +11,7 @@
   --primary-hover: #82b9a2;
   --secondary: #c16766;
   --secondary-hover: #db8c8b;
-  --on-surface: #333;
+  --on-surface: #535353;
   --blur-color: rgba(255, 255, 255, .75);
   --blur-color-variant: rgba(255, 255, 255, .45);
 
@@ -219,6 +219,7 @@ svg {
   text-align: center;
   color: var(--on-surface);
   font-weight: var(--font-medium);
+  line-height: 1.5;
 }
 
 .hero__title span {
