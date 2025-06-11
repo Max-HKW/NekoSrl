@@ -12,7 +12,8 @@
   --secondary: #c16766;
   --secondary-hover: #db8c8b;
   --on-surface: #333;
-  --blur-color: rgba(255, 255, 255, .3);
+  --blur-color: rgba(255, 255, 255, .75);
+  --blur-color-variant: rgba(255, 255, 255, .45);
 
   /* FONT */
 
@@ -33,6 +34,9 @@
   /* Z-INDEX */
   --z-tooltip: 10;
   --z-fixed: 100;
+
+  /* SHADOW */
+  --shadow: 0 4px 6px rgba(0, 0, 0, .3);
 }
 
 *,
@@ -163,6 +167,7 @@ svg {
     padding-block: 2rem;
     width: 75%;
     border-top: 3px solid var(--secondary);
+    box-shadow: var(--shadow);
     transition: top .3s;
   }
 }
@@ -187,4 +192,41 @@ svg {
 
 .show-menu {
   top: var(--header-height);
+}
+
+/* MAIN */
+
+
+.hero {
+  background-image: linear-gradient(130deg, rgba(255, 255, 255, 0.65) 25%, rgba(0, 0, 0, 0) 100%), url(../images/3d-rendering-blockchain-technology.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50vh;
+  display: grid;
+  place-items: center;
+}
+
+.hero__content {
+  padding-block: 4rem;
+  background-color: var(--blur-color-variant);
+  backdrop-filter: blur(5px);
+  padding: 2.5rem 2rem;
+  border-radius: 2.4rem;
+}
+
+.hero__title {
+  text-align: center;
+  color: var(--on-surface);
+  font-weight: var(--font-medium);
+}
+
+.hero__title span {
+  color: var(--secondary);
+  font-weight: var(--font-semi-bold);
+}
+
+.hero__title span sup {
+  font-weight: var(--font-semi-bold);
+  font-size: 1.5rem;
 }
