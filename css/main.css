@@ -1,3 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+  --header-height: 3.5rem;
+
+  /* COLORS */
+
+  --white-color: #fff;
+
+  --primary: #6ea48f;
+  --primary-hover: #82b9a2;
+  --secondary: #c16766;
+  --secondary-hover: #db8c8b;
+  --on-surface: #333;
+  --blur-color: rgba(255, 255, 255, .3);
+
+  /* FONT */
+
+  --primary-font: 'Lato', sans-serif;
+
+  --big-font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
+  --h1-font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
+  --h2-font-size: clamp(1.25rem, 1.5vw + 1rem, 1.5rem);
+  --h3-font-size: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+  --normal-font-size: clamp(0.938rem, 0.7vw + 0.5rem, 1rem);
+  --small-font-size: clamp(0.813rem, 0.6vw + 0.4rem, 0.875rem);
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /* Z-INDEX */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
 *,
 *::before,
 *::after {
@@ -38,6 +75,7 @@ a {
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 html,
@@ -46,6 +84,10 @@ body {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--primary-font);
 }
 
 input,
@@ -69,4 +111,80 @@ svg {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+/* HEADER & NAV*/
+
+.nav__logo-img {
+  width: 100px;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--white-color);
+  z-index: var(--z-fixed);
+}
+
+.nav {
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-bottom: 1px solid #333; */
+}
+
+.nav__toggle,
+.nav__close {
+  font-size: 1.5rem;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+@media (max-width: 1150px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--blur-color);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    padding-block: 2rem;
+    width: 75%;
+    border-top: 3px solid var(--secondary);
+    transition: top .3s;
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+}
+
+.nav__link {
+  color: var(--secondary);
+  font-weight: var(--font-semi-bold);
+  transition: color .3s;
+}
+
+.nav__link:hover {
+  color: var(--secondary-hover);
+}
+
+/* SHOW MENU */
+
+.show-menu {
+  top: var(--header-height);
 }
