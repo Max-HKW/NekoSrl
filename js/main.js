@@ -18,3 +18,20 @@ const linkAction = () => {
 navLinks.forEach(link => {
     link.addEventListener('click', linkAction);
 });
+
+
+// CARDS ANIMATION
+
+const cards = document.querySelectorAll('.card');
+
+function rotateCards() {
+  let angle = 0;
+  cards.forEach((card, index) => {
+    card.style.transform = `rotate(${angle}deg)`;
+    angle -= 10;
+
+    card.style.zIndex = cards.length -index;
+  });
+}
+
+rotateCards();

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 :root {
   --header-height: 3.5rem;
@@ -12,14 +12,19 @@
   --secondary: #c16766;
   --secondary-hover: #db8c8b;
   --on-surface: #535353;
-  --blur-color: rgba(255, 255, 255, 0.7);
+  --blur-color: rgba(255, 255, 255, 0.8);
   --blur-color-variant: rgba(255, 255, 255, 0.45);
 
   --btn-gradient: linear-gradient(90deg, #3bad83 0%, #1d7f63 100%);
 
+  --first-card: #33c28b;
+  --second-card: #eb4598;
+  --third-card: #BAB8E1;
+  --fourth-card: #474747;
+
   /* FONT */
 
-  --primary-font: "Lato", sans-serif;
+  --primary-font: 'Lato', sans-serif;
 
   --big-font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
   --h1-font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
@@ -236,7 +241,6 @@ svg {
 .title {
   text-align: center;
   color: var(--on-surface);
-  font-weight: var(--font-medium);
   line-height: 1.5;
 }
 
@@ -279,14 +283,54 @@ svg {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .8rem;
+  gap: 0.8rem;
 }
 
 .about__title {
   color: var(--primary);
-  font-weight: var(--font-medium)
+  font-weight: var(--font-semi-bold);
 }
 
 .about__subtitle {
   font-weight: var(--font-semi-bold);
+}
+
+/* CARDS ANIMATION*/
+
+.about__cards-container {
+  width: 100%;
+  height: 100vh;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.about__card {
+  width: 350px;
+  height: 350px;
+  border-radius: 25px;
+  background-color: var(--first-card);
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+.about__card:nth-child(2) {
+  background-color: var(--second-card);
+}
+
+.about__card:nth-child(3) {
+  background-color: var(--third-card);
+}
+
+.about__card:nth-child(4) {
+  background-color: var(--fourth-card);
+}
+
+.about__card-header {
+  flex: 2;
 }
