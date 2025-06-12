@@ -16,22 +16,47 @@ const linkAction = () => {
 };
 
 navLinks.forEach(link => {
-    link.addEventListener('click', linkAction);
+  link.addEventListener('click', linkAction);
 });
-
 
 // CARDS ANIMATION
 
+const cardsContainer = document.querySelector('.about__cards-container');
 const cards = document.querySelectorAll('.card');
 
 function rotateCards() {
   let angle = 0;
   cards.forEach((card, index) => {
-    card.style.transform = `rotate(${angle}deg)`;
-    angle -= 10;
+    if (card.classList.contains('away')) {
+      card.style.transform = `translateY(-120vh) rotate(-48deg)`;
+    } else {
+      card.style.transform = `rotate(${angle}deg)`;
+      angle -= 10;
 
-    card.style.zIndex = cards.length -index;
+      card.style.zIndex = cards.length - index;
+    }
   });
 }
 
 rotateCards();
+
+window.addEventListener('scroll', () => {
+  let distance = window.innerHeight * 0.5;
+
+  let topVal = cardsContainer.getBoundingClientRect().top;
+
+  let index = -1 * (topVal / distance + 1);
+
+  index = Math.floor(index);
+
+  for (let i = 0; i < cards.length; i++) {
+    if (i <= index) {
+      cards[i].classList.add('away');
+    } else {
+      cards[i].classList.remove('away');
+    }
+  }
+
+  rotateCards();
+});
+

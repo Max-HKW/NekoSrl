@@ -19,7 +19,7 @@
 
   --first-card: #33c28b;
   --second-card: #eb4598;
-  --third-card: #BAB8E1;
+  --third-card: #bab8e1;
   --fourth-card: #474747;
 
   /* FONT */
@@ -299,13 +299,18 @@ svg {
 
 .about__cards-container {
   width: 100%;
-  height: 100vh;
-  margin-top: 5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
   position: relative;
+  height: 300vh; /* Spazio per scrollare: 3 schermate */
+}
+
+.about__wrapper {
+  width: 100%;
+  height: 100vh; /* Altezza visibile */
+  position: sticky;
+  top: 0; /* Sticky top */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .about__card {
@@ -317,8 +322,8 @@ svg {
   display: flex;
   flex-direction: column;
   position: absolute;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
-
 .about__card:nth-child(2) {
   background-color: var(--second-card);
 }
@@ -333,4 +338,25 @@ svg {
 
 .about__card-header {
   flex: 2;
+}
+
+.away {
+  transform-origin: bottom left;
+}
+
+.feature {
+  background-color: #f3f3f3;
+  padding: 10rem 2rem;
+  height: 100vh;
+  margin-top: -30vh;
+}
+
+.contact {
+  background-color: #82b9a2;
+  height: 50vh;
+}
+
+footer {
+  background-color: var(--on-surface);
+  height: 100vh;
 }
