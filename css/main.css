@@ -124,6 +124,10 @@ svg {
   margin-inline: 1.5rem;
 }
 
+.section {
+  margin-bottom: 4rem;
+}
+
 /* HEADER & NAV*/
 
 .nav__logo-img {
@@ -225,26 +229,28 @@ svg {
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
+  min-width: 350px;
+  max-width: 600px;
 }
 
-.hero__title {
+.title {
   text-align: center;
   color: var(--on-surface);
   font-weight: var(--font-medium);
   line-height: 1.5;
 }
 
-.hero__title span {
+.title span {
   color: var(--secondary);
-  font-weight: var(--font-semi-bold);
+  font-weight: var(--font-bold);
 }
 
-.hero__title span sup {
+.title span sup {
   font-weight: var(--font-semi-bold);
   font-size: 1.5rem;
 }
 
-.hero__subtitle {
+.subtitle {
   text-align: center;
   font-size: var(--normal-font-size);
   color: var(--on-surface);
@@ -266,4 +272,20 @@ svg {
 
 .btn:hover {
   padding-inline: 2.8rem;
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .8rem;
+}
+
+.about__title {
+  color: var(--primary);
+  font-weight: var(--font-medium)
+}
+
+.about__subtitle {
+  font-weight: var(--font-semi-bold);
 }
