@@ -254,6 +254,7 @@ svg {
   text-align: center;
   font-size: var(--normal-font-size);
   color: var(--on-surface);
+  line-height: 1.5;
 }
 
 .btn {
