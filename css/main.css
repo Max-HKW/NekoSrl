@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 :root {
   --header-height: 3.5rem;
@@ -12,12 +12,14 @@
   --secondary: #c16766;
   --secondary-hover: #db8c8b;
   --on-surface: #535353;
-  --blur-color: rgba(255, 255, 255, .75);
-  --blur-color-variant: rgba(255, 255, 255, .45);
+  --blur-color: rgba(255, 255, 255, 0.7);
+  --blur-color-variant: rgba(255, 255, 255, 0.45);
+
+  --btn-gradient: linear-gradient(90deg, #3bad83 0%, #1d7f63 100%);
 
   /* FONT */
 
-  --primary-font: 'Lato', sans-serif;
+  --primary-font: "Lato", sans-serif;
 
   --big-font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
   --h1-font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
@@ -36,7 +38,7 @@
   --z-fixed: 100;
 
   /* SHADOW */
-  --shadow: 0 4px 6px rgba(0, 0, 0, .3);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 *,
@@ -161,6 +163,7 @@ svg {
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--blur-color);
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
@@ -168,7 +171,7 @@ svg {
     width: 75%;
     border-top: 3px solid var(--secondary);
     box-shadow: var(--shadow);
-    transition: top .3s;
+    transition: top 0.3s;
   }
 }
 
@@ -181,7 +184,7 @@ svg {
 .nav__link {
   color: var(--secondary);
   font-weight: var(--font-semi-bold);
-  transition: color .3s;
+  transition: color 0.3s;
 }
 
 .nav__link:hover {
@@ -196,9 +199,13 @@ svg {
 
 /* MAIN */
 
-
 .hero {
-  background-image: linear-gradient(130deg, rgba(255, 255, 255, 0.65) 25%, rgba(0, 0, 0, 0) 100%), url(../images/3d-rendering-blockchain-technology.jpg);
+  background-image: linear-gradient(
+      130deg,
+      rgba(255, 255, 255, 0.65) 25%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url(../images/3d-rendering-blockchain-technology.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -210,9 +217,14 @@ svg {
 .hero__content {
   padding-block: 4rem;
   background-color: var(--blur-color-variant);
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   padding: 2.5rem 2rem;
   border-radius: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
 }
 
 .hero__title {
@@ -230,4 +242,28 @@ svg {
 .hero__title span sup {
   font-weight: var(--font-semi-bold);
   font-size: 1.5rem;
+}
+
+.hero__subtitle {
+  text-align: center;
+  font-size: var(--normal-font-size);
+  color: var(--on-surface);
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2rem;
+  color: var(--white-color);
+  background: var(--btn-gradient);
+  text-align: center;
+  width: max-content;
+  margin-top: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  transition: padding 0.3s ease;
+}
+
+.btn:hover {
+  padding-inline: 2.8rem;
 }
