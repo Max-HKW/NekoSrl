@@ -11,9 +11,16 @@
   --primary-hover: #82b9a2;
   --secondary: #c16766;
   --secondary-hover: #db8c8b;
-  --on-surface: #333;
-  --blur-color: rgba(255, 255, 255, .75);
-  --blur-color-variant: rgba(255, 255, 255, .45);
+  --on-surface: #535353;
+  --blur-color: rgba(255, 255, 255, 0.8);
+  --blur-color-variant: rgba(255, 255, 255, 0.45);
+
+  --btn-gradient: linear-gradient(90deg, #3bad83 0%, #1d7f63 100%);
+
+  --first-card: #33c28b;
+  --second-card: #eb4598;
+  --third-card: #BAB8E1;
+  --fourth-card: #474747;
 
   /* FONT */
 
@@ -36,7 +43,7 @@
   --z-fixed: 100;
 
   /* SHADOW */
-  --shadow: 0 4px 6px rgba(0, 0, 0, .3);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 *,
@@ -122,6 +129,10 @@ svg {
   margin-inline: 1.5rem;
 }
 
+.section {
+  margin-bottom: 4rem;
+}
+
 /* HEADER & NAV*/
 
 .nav__logo-img {
@@ -161,6 +172,7 @@ svg {
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--blur-color);
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
@@ -168,7 +180,7 @@ svg {
     width: 75%;
     border-top: 3px solid var(--secondary);
     box-shadow: var(--shadow);
-    transition: top .3s;
+    transition: top 0.3s;
   }
 }
 
@@ -181,7 +193,7 @@ svg {
 .nav__link {
   color: var(--secondary);
   font-weight: var(--font-semi-bold);
-  transition: color .3s;
+  transition: color 0.3s;
 }
 
 .nav__link:hover {
@@ -196,9 +208,13 @@ svg {
 
 /* MAIN */
 
-
 .hero {
-  background-image: linear-gradient(130deg, rgba(255, 255, 255, 0.65) 25%, rgba(0, 0, 0, 0) 100%), url(../images/3d-rendering-blockchain-technology.jpg);
+  background-image: linear-gradient(
+      130deg,
+      rgba(255, 255, 255, 0.65) 25%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url(../images/3d-rendering-blockchain-technology.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -210,23 +226,111 @@ svg {
 .hero__content {
   padding-block: 4rem;
   background-color: var(--blur-color-variant);
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   padding: 2.5rem 2rem;
   border-radius: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 350px;
+  max-width: 600px;
 }
 
-.hero__title {
+.title {
   text-align: center;
   color: var(--on-surface);
-  font-weight: var(--font-medium);
+  line-height: 1.5;
 }
 
-.hero__title span {
+.title span {
   color: var(--secondary);
-  font-weight: var(--font-semi-bold);
+  font-weight: var(--font-bold);
 }
 
-.hero__title span sup {
+.title span sup {
   font-weight: var(--font-semi-bold);
   font-size: 1.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: var(--normal-font-size);
+  color: var(--on-surface);
+  line-height: 1.5;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2rem;
+  color: var(--white-color);
+  background: var(--btn-gradient);
+  text-align: center;
+  width: max-content;
+  margin-top: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  transition: padding 0.3s ease;
+}
+
+.btn:hover {
+  padding-inline: 2.8rem;
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.about__title {
+  color: var(--primary);
+  font-weight: var(--font-semi-bold);
+}
+
+.about__subtitle {
+  font-weight: var(--font-semi-bold);
+}
+
+/* CARDS ANIMATION*/
+
+.about__cards-container {
+  width: 100%;
+  height: 100vh;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.about__card {
+  width: 350px;
+  height: 350px;
+  border-radius: 25px;
+  background-color: var(--first-card);
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+.about__card:nth-child(2) {
+  background-color: var(--second-card);
+}
+
+.about__card:nth-child(3) {
+  background-color: var(--third-card);
+}
+
+.about__card:nth-child(4) {
+  background-color: var(--fourth-card);
+}
+
+.about__card-header {
+  flex: 2;
 }
