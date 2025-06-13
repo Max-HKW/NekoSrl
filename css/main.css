@@ -44,6 +44,13 @@
 
   /* SHADOW */
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+  /* CARDS */
+
+  --cards: 4;
+  --card-height: 25vh;
+  --card-top-padding: 1.5em;
+  --card-margin: 6vw;
 }
 
 *,
@@ -146,6 +153,7 @@ svg {
   left: 0;
   background-color: var(--white-color);
   z-index: var(--z-fixed);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav {
@@ -312,57 +320,81 @@ svg {
 
 /* CARDS ANIMATION*/
 
-
-/* .about__card {
-  width: 350px;
-  height: 350px;
-  border-radius: 25px;
-  background-color: var(--first-card);
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-  */
-
-.about__cards-container {
+.about__wrapper {
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 4rem 1rem;
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(var(--cards), 1fr);
+  gap: var(--card-margin);
+  padding-bottom: calc(var(--cards) * var(--card-top-padding));
+  position: relative;
 }
 
-.about__card {
-  background-color: var(--first-card, #f0f0f0);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  transform: translateY(100px);
+.about__card:first-child {
+  --index: 1;
+  background-color: var(--first-card);
+  top: 6rem;
 }
 
 .about__card:nth-child(2) {
+  --index: 2;
   background-color: var(--second-card);
+  top: 7rem;
 }
 
 .about__card:nth-child(3) {
+  --index: 3;
   background-color: var(--third-card);
+  top: 8rem;
 }
 
-.about__card:nth-child(4) {
+.about__card:last-child {
+  --index: 4;
   background-color: var(--fourth-card);
+  top: 9rem;
+}
+
+.card {
+  --scale: calc(1 - var(--index) * 0.02);
+
+  transform: scale(var(--scale));
+
+  height: var(--card-height);
+  width: 75vw;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px;
+  position: sticky;
+  z-index: 1;
+  place-self: center;
+  max-width: 400px;
+  transition: transform 0.3s ease;
+  gap: 1rem;
+  align-items: center;
+
+  color: var(--white-color);
+  text-align: center;
+}
+
+.about__card:nth-child(3) {
+  color: #2c2c2c;
 }
 
 .about__card-header {
-  flex: 2;
+  /* flex: 2; */
+  /* font-size: var(--h3-font-size); */
+  font-size: 1rem;
 }
 
-.away {
-  transform-origin: bottom left;
+.about__card-body {
+  /* font-size: var(--h3-font-size); */
+  font-size: 1rem;
+}
+
+.about__card-icon i {
+  font-size: 2rem;
 }
 
 .feature {
