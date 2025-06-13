@@ -297,20 +297,21 @@ svg {
 
 /* CARDS ANIMATION*/
 
-.about__cards-container {
+/* .about__cards-container {
   width: 100%;
   position: relative;
-  height: 300vh; /* Spazio per scrollare: 3 schermate */
+  height: 300vh; 
 }
 
 .about__wrapper {
   width: 100%;
-  height: 100vh; /* Altezza visibile */
+  height: 100vh; 
   position: sticky;
-  top: 0; /* Sticky top */
+  top: 0; 
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 600px;
 }
 
 .about__card {
@@ -324,6 +325,29 @@ svg {
   position: absolute;
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
+ */
+
+ .about__cards-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 4rem 1rem;
+}
+
+.about__card {
+  background-color: var(--first-card, #f0f0f0);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+
+
 .about__card:nth-child(2) {
   background-color: var(--second-card);
 }
@@ -348,7 +372,6 @@ svg {
   background-color: #f3f3f3;
   padding: 10rem 2rem;
   height: 100vh;
-  margin-top: -30vh;
 }
 
 .contact {
