@@ -60,18 +60,27 @@ navLinks.forEach((link) => {
 //   rotateCards();
 // });
 
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-  gsap.utils.toArray('.about__card').forEach((card, i) => {
-    gsap.to(card, {
+ScrollTrigger.batch(".about__card", {
+  onEnter: batch => {
+    gsap.to(batch, {
       opacity: 1,
       y: 0,
       duration: 0.8,
       ease: "power3.out",
-      scrollTrigger: {
-        trigger: card,
-        start: "top 80%", 
-        toggleActions: "play none none reverse"
-      }
+      stagger: 0.1,
     });
-  });
+  },
+  onLeaveBack: batch => {
+    gsap.to(batch, {
+      opacity: 0,
+      y: 50,
+      duration: 0.6,
+      stagger: 0.05,
+    });
+  },
+  start: "top 80%",
+  toggleActions: "play none none reverse"
+});
+
