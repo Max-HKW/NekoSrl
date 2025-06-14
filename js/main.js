@@ -46,3 +46,35 @@ const observer = new IntersectionObserver(
 );
 
 cards.forEach(card => observer.observe(card));
+
+
+// FORM
+
+const circles = document.querySelectorAll('.feature__circle'),
+      progressBar = document.querySelector('.feature__indicator'),
+      buttons = document.querySelectorAll('.feature__buttons button');
+
+
+let currentStep = 1;
+
+const updateStep = e => {
+  currentStep = e.target.id === 'next' ? ++currentStep : --currentStep;
+
+  circles.forEach((circle, index) => {
+    circle.classList[`${index < currentStep ? 'add' : 'remove'}`]('active');
+  })
+
+  progressBar.style.width = `${((currentStep - 1) / (circles.length - 1)) * 100}%`;
+
+  if (currentStep === circles.length) {
+    buttons[1].disabled = true;
+  } else if (currentStep === 1) {
+    buttons[0].disabled = true;
+  } else {
+    buttons.forEach(button => button.disabled = false);
+  }
+}
+
+buttons.forEach(button => {
+  button.addEventListener('click', updateStep);
+})

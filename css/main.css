@@ -9,10 +9,11 @@
 
   --primary: #6ea48f;
   --primary-hover: #82b9a2;
+  --primary-disabled: #a7c7bb;
   --secondary: #c16766;
   --secondary-hover: #db8c8b;
   --on-surface: #535353;
-  --blur-color: rgba(255, 255, 255, 0.8);
+  --blur-color: rgba(255, 255, 255, 0.9);
   --blur-color-variant: rgba(255, 255, 255, 0.45);
 
   --btn-gradient: linear-gradient(90deg, #3bad83 0%, #1d7f63 100%);
@@ -53,11 +54,6 @@
   --stacked-card-height: 25vh;
   --card-offset-top-inside: 1.5em;
   --card-stack-overlap-gap: 6vw;
-
-  /* CIRCLES */
-
-  --circle-width: 48px;
-  --circle-height: 48px;
 }
 
 *,
@@ -397,7 +393,7 @@ svg {
   margin-top: 0.8rem;
   border-radius: 5px;
   border: none;
-  transition: padding 0.3s ease;
+  transition: padding 0.3s ease, background .3s ease;
   font-size: var(--normal-font-size);
 }
 
@@ -523,6 +519,10 @@ svg {
 
 /* MAIN FEATURE */
 
+.feature {
+  height: 50vh;
+}
+
 .feature__header {
   display: flex;
   flex-direction: column;
@@ -530,6 +530,83 @@ svg {
   gap: 1rem;
 }
 
+.feature__steps {
+  min-width: 300px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding-inline: 4rem; */
+  position: relative;
+  margin: 3.5rem auto;
+}
+
+.feature__steps .feature__circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 4px solid #d2f3e7;
+  color: #dda2a1;
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+  background-color: var(--white-color);
+  transition: all .2s ease;
+  transition-delay: 0s;
+}
+
+.feature__steps .feature__circle.active {
+  transition-delay: 100ms;
+  border-color: var(--first-card);
+}
+
+.feature__steps .feature__progress-bar {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background-color: #d2f3e7;
+  z-index: -1;
+}
+
+.feature__progress-bar .feature__indicator {
+  position: absolute;
+  height: 100%;
+  width: 0;
+  background-color: #389b77;
+  transition: all .3s ease;
+}
+
+.feature__buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.feature__buttons button {
+  display: flex;
+  padding: 1rem 2rem;
+  color: var(--white-color);
+  background: var(--btn-gradient);
+  border-radius: 5px;
+  border: none;
+  font-size: var(--normal-font-size);
+  width: 40%;
+  justify-content: center;
+  transition: width 0.3s;
+  cursor: pointer;
+}
+
+.feature__buttons button:hover {
+  width: 50%;
+}
+
+button:disabled {
+  background: var(--primary-disabled);
+  cursor: not-allowed;
+}
 /* BREAKPOINTS */
 
 /* FOR LARGE DEVICES */
@@ -551,6 +628,10 @@ svg {
     flex-direction: row;
     align-items: center;
     column-gap: 4rem;
+  }
+
+  .hero {
+    height: 75vh;
   }
 
   .about {
