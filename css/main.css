@@ -22,6 +22,8 @@
   --third-card: #bab8e1;
   --fourth-card: #474747;
 
+  --header-alternative: #87c0aa;
+
   /* FONT */
 
   --primary-font: 'Lato', sans-serif;
@@ -43,14 +45,14 @@
   --z-fixed: 100;
 
   /* SHADOW */
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   /* CARDS */
 
-  --cards: 4;
-  --card-height: 25vh;
-  --card-top-padding: 1.5em;
-  --card-margin: 6vw;
+  --stacked-card-count: 4;
+  --stacked-card-height: 25vh;
+  --card-offset-top-inside: 1.5em;
+  --card-stack-overlap-gap: 6vw;
 }
 
 *,
@@ -131,6 +133,8 @@ svg {
   height: auto;
 }
 
+/* HELPER CLASSES */
+
 .container {
   max-width: 1120px;
   margin-inline: 1.5rem;
@@ -153,8 +157,17 @@ svg {
   left: 0;
   background-color: var(--white-color);
   z-index: var(--z-fixed);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
+  transition: background-color 0.3s;
 }
+
+/* CHANCGE BACKGROUND HEADER */
+
+.bg-header {
+  background-color: var(--header-alternative);
+}
+
+/* NAV */
 
 .nav {
   position: relative;
@@ -165,13 +178,90 @@ svg {
   /* border-bottom: 1px solid #333; */
 }
 
-.nav__toggle,
-.nav__close {
-  font-size: 1.5rem;
-  color: var(--secondary);
+/* NAV ICON ANIMATION */
+
+.nav__toggle {
+  position: relative;
+  width: 42px;
+  height: 32px;
   cursor: pointer;
-  transition: color 0.3s;
+  transform: scale(0.8);
 }
+
+.nav__toggle span {
+  position: absolute;
+  width: 50%;
+  height: 6px;
+  background-color: var(--secondary);
+  transition: all 0.2s ease-in-out;
+}
+
+.nav__toggle span:nth-child(odd) {
+  left: 0;
+  border-radius: 9px 0 0 9px;
+}
+
+.nav__toggle span:nth-child(even) {
+  left: 50%;
+  border-radius: 0 9px 9px 0;
+}
+
+.nav__toggle span:nth-child(1),
+.nav__toggle span:nth-child(2) {
+  top: 0;
+}
+
+.nav__toggle span:nth-child(3),
+.nav__toggle span:nth-child(4) {
+  top: 13px;
+}
+
+.nav__toggle span:nth-child(5),
+.nav__toggle span:nth-child(6) {
+  top: 26px;
+}
+
+.nav__open .nav__toggle span:nth-child(1),
+.nav__open .nav__toggle span:nth-child(6) {
+  transform: rotate(45deg);
+}
+
+.nav__open .nav__toggle span:nth-child(2),
+.nav__open .nav__toggle span:nth-child(5) {
+  transform: rotate(-45deg);
+}
+
+.nav__open .nav__toggle span:nth-child(1) {
+  top: 8px;
+  left: 5px;
+}
+
+.nav__open .nav__toggle span:nth-child(2) {
+  top: 8px;
+  left: calc(50% - 5px);
+}
+
+.nav__open .nav__toggle span:nth-child(3) {
+  left: -100%;
+  opacity: 0;
+}
+
+.nav__open .nav__toggle span:nth-child(4) {
+  left: 150%;
+  opacity: 0;
+}
+
+.nav__open .nav__toggle span:nth-child(5) {
+  top: 19px;
+  left: 5px;
+}
+
+.nav__open .nav__toggle span:nth-child(6) {
+  top: 19px;
+  left: calc(50% - 5px);
+}
+
+/* MOBILE MENU */
 
 @media (max-width: 1150px) {
   .nav__menu {
@@ -297,11 +387,22 @@ svg {
   padding-inline: 2.8rem;
 }
 
+.about {
+  display: grid;
+}
+
 .about__content {
+  position: relative;
+  height: 100%;
+}
+
+.about__content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
+  position: sticky;
+  top: 10rem;
 }
 
 .about__title {
@@ -322,12 +423,14 @@ svg {
 
 .about__wrapper {
   width: 100%;
-  margin: 3rem auto;
+  margin: 3rem auto 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(var(--cards), 1fr);
-  gap: var(--card-margin);
-  padding-bottom: calc(var(--cards) * var(--card-top-padding));
+  grid-template-rows: repeat(var(--stacked-card-count), 1fr);
+  gap: var(--card-stack-overlap-gap);
+  padding-bottom: calc(
+    var(--stacked-card-count) * var(--card-offset-top-inside)
+  );
   position: relative;
 }
 
@@ -360,7 +463,7 @@ svg {
 
   transform: scale(var(--scale));
 
-  height: var(--card-height);
+  height: var(--stacked-card-height);
   width: 75vw;
   padding: 2rem;
   display: flex;
@@ -370,12 +473,28 @@ svg {
   z-index: 1;
   place-self: center;
   max-width: 400px;
-  transition: transform 0.3s ease;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   gap: 1rem;
   align-items: center;
-
   color: var(--white-color);
   text-align: center;
+  opacity: 0;
+}
+
+
+.card.animate {
+  animation: fade-in-up  0.8s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .about__card:nth-child(3) {
@@ -411,4 +530,41 @@ svg {
 footer {
   background-color: var(--on-surface);
   height: 100vh;
+}
+
+/* BREAKPOINTS */
+
+/* FOR LARGE DEVICES */
+
+@media (min-width: 1150px) {
+  .container {
+    margin: 0 auto;
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__menu {
+    width: initial;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    align-items: center;
+    column-gap: 4rem;
+  }
+
+  .about {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about__content {
+    padding-bottom: 8rem;
+  }
+
+  .about__wrapper {
+    margin-top: 0;
+  }
+
 }

@@ -69,17 +69,6 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css" />
 
-    <!-- Animazione JS-->
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
-      defer
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
-      defer
-    ></script>
-
     <!-- Custom JS -->
     <script src="js/main.js" defer></script>
   </head>
@@ -111,8 +100,14 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
         </div>
 
         <div class="nav__toggle" id="nav-toggle">
-          <i class="ri-menu-line"></i>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+
       </nav>
     </header>
 
@@ -133,16 +128,19 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
         </div>
       </section>
 
-      <section class="about section" id="about">
+      <section class="about section container" id="about">
+
         <div class="about__content container">
-          <h2 class="about__title title">
-            Perché scegliere il configuratore di
-            <span>KeCert <sup>&#174;</sup></span> ?
-          </h2>
-          <p class="about__subtitle subtitle">
-            Hai bisogno di una soluzione semplice per gestire certificati
-            digitali? Scopri i vantaggi esclusivi del nostro configuratore.
-          </p>
+          <div class="about__content-wrapper">
+            <h2 class="about__title title">
+              Perché scegliere il configuratore di
+              <span>KeCert <sup>&#174;</sup></span> ?
+            </h2>
+            <p class="about__subtitle subtitle">
+              Hai bisogno di una soluzione semplice per gestire certificati
+              digitali? Scopri i vantaggi esclusivi del nostro configuratore.
+            </p>
+          </div>
         </div>
 
         <div class="about__cards-container container">
@@ -209,6 +207,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             </div>
           </div>
         </div>
+
       </section>
 
       <section class="feature">
