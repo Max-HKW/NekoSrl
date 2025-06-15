@@ -212,23 +212,103 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
       <section class="feature section container" id="feature">
         <div class="feature__header">
-          <h2 class="feature__title title">Configura l’offerta su misura per la tua realtà</h2>
-          <h3 class="feature__subtitle subtitle">Bastano pochi clic per visualizzare il piano più adatto alle tue esigenze</h3>
+          <h2 class="feature__title title">
+            Configura l’offerta su misura per la tua realtà
+          </h2>
+          <h3 class="feature__subtitle subtitle">
+            Bastano pochi click per visualizzare il piano più adatto alle tue
+            esigenze
+          </h3>
         </div>
 
-        <div class="feature__steps">
-          <span class="feature__circle active">1</span>
-          <span class="feature__circle">2</span>
-          <span class="feature__circle">3</span>
-          <span class="feature__circle">4</span>
-          <div class="feature__progress-bar">
-            <span class="feature__indicator"></span>
+        <form id="feature__form">
+          <div class="feature__steps">
+            <span class="feature__circle active">1</span>
+            <span class="feature__circle">2</span>
+            <span class="feature__circle">3</span>
+            <span class="feature__circle">4</span>
+            <span class="feature__circle">5</span>
+            <div class="feature__progress-bar">
+              <span class="feature__indicator"></span>
+            </div>
           </div>
-        </div>
-        <div class="feature__buttons">
-          <button id="prev" disabled>Indietro</button>
-          <button id="next">Avanti</button>
-        </div>
+
+          <!-- STEP 1 -->
+          <fieldset class="step active" data-step="1">
+            <legend>Di quanti corsi hai bisogno?</legend>
+            <div class="fieldset__wrapper">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="type" value="singolo" required />
+                <span class="checkmark"></span> Corso singolo
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="type" value="multipli" required />
+                <span class="checkmark"></span> Corsi multipli
+              </label>
+              <label class="custom-checkbox">
+                <input
+                  type="checkbox"
+                  name="type"
+                  value="personalizzato"
+                  required
+                />
+                <span class="checkmark"></span> Personalizzato
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- STEP 3 - Studenti -->
+          <fieldset class="step" data-step="3">
+            <legend>Da quanti studenti è composto il tuo corso?</legend>
+            <div class="fieldset__wrapper">
+              <label class="custom-checkbox">
+                <input
+                  type="checkbox"
+                  name="students-number"
+                  value="individuale"
+                  required
+                />
+                <span class="checkmark"></span> Singolo studente
+              </label>
+              <label class="custom-checkbox">
+                <input
+                  type="checkbox"
+                  name="students-number"
+                  value="30studenti"
+                  required
+                />
+                <span class="checkmark"></span> 30 studenti
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- STEP 4 - Anni -->
+          <fieldset class="step" data-step="4">
+            <legend>Per quanti anni vorresti essere certificato?</legend>
+            <div class="fieldset__wrapper">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="years" value="10" required />
+                <span class="checkmark"></span> 10 anni
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="years" value="100" required />
+                <span class="checkmark"></span> 100 anni
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="step" data-step="5">
+            <legend>Riepilogo</legend>
+            <div class="summary"></div>
+            <button type="submit">Conferma</button>
+            <div id="successMessage">Operazione riuscita con successo!</div>
+          </fieldset>
+
+          <div class="feature__buttons">
+            <button type="button" id="prev" disabled>Indietro</button>
+            <button type="button" id="next">Avanti</button>
+          </div>
+        </form>
       </section>
     </main>
   </body>

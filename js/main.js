@@ -48,7 +48,7 @@ const observer = new IntersectionObserver(
 cards.forEach(card => observer.observe(card));
 
 
-// FORM
+// FORM STEP
 
 const circles = document.querySelectorAll('.feature__circle'),
       progressBar = document.querySelector('.feature__indicator'),
@@ -77,4 +77,12 @@ const updateStep = e => {
 
 buttons.forEach(button => {
   button.addEventListener('click', updateStep);
+})
+
+// WIZARD FORM
+
+const form = document.getElementById('feature__form');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
 })
