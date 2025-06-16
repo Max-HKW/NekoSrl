@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ul = document.createElement('ul');
     const listItemType = document.createElement('li');
     listItemType.className = 'list-summary';
-    listItemType.textContent = `Tipo: ${type}`;
+    listItemType.innerHTML = `<strong>Tipo:</strong> ${type}`;
     ul.appendChild(listItemType);
 
     if (type === 'singolo') {
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const listItemDuration = document.createElement('li');
       listItemDuration.className = 'list-summary';
-      listItemDuration.textContent = `Durata: ${years} anni`;
+      listItemDuration.innerHTML = `<strong>Durata:</strong> ${years} anni`;
       ul.appendChild(listItemDuration);
     }
 
@@ -202,19 +202,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const listItemCourses = document.createElement('li');
       listItemCourses.className = 'list-summary';
-      listItemCourses.textContent = `Corsi: ${courses}`;
+      listItemCourses.innerHTML = `<strong>Corsi:</strong> ${courses}`;
       ul.append(listItemCourses);
 
       const listItemStudents = document.createElement('li');
       listItemStudents.className = 'list-summary';
-      listItemStudents.textContent = `Studenti: ${
+      listItemStudents.innerHTML = `<strong>Studenti:</strong> ${
         students === 'individuale' ? 'Singolo studente' : '30 studenti'
       }`;
       ul.append(listItemStudents);
 
       const listItemDuration = document.createElement('li');
       listItemDuration.className = 'list-summary';
-      listItemDuration.textContent = `Durata: ${duration}`;
+      listItemDuration.innerHTML = `<strong>Durata:</strong> ${duration}`;
       ul.append(listItemDuration);
     }
 
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const listItemPrice = document.createElement('li');
     listItemPrice.className = 'list-summary';
-    listItemPrice.textContent = `Prezzo totale: ${price}`;
+    listItemPrice.innerHTML = `<strong>Prezzo totale:</strong> ${price}`;
     ul.append(listItemPrice);
 
     summaryBox.textContent = '';
