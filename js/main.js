@@ -174,12 +174,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = new FormData(form);
     const type = data.get('tipo');
     let price = 0;
+    // let card = document.createElement('div');
+    // card.className = 'summary-card';
 
-    const ul = document.createElement('ul');
-    const listItemType = document.createElement('li');
-    listItemType.className = 'list-summary';
-    listItemType.innerHTML = `<strong>Tipo:</strong> ${type}`;
-    ul.appendChild(listItemType);
+    // let title = document.createElement('h3');
+    // title.className = 'summary-title';
+    // title.textContent = 'Riepilogo Configurazione 📋';
+    // card.appendChild(title);
+
+    const cardList = document.createElement('ul');
+    cardList.className = 'card-list';
+
+    const addItem = (label, value, icon, itemClass) => {
+      const listItem = document.createElement('li');
+      listItem.className = itemClass;
+      listItem.innerHTML = `<i class="ri-${icon}"></i> <strong>${label}:</strong> ${value}`;
+      cardList.appendChild(listItem);
+    };
+
+    // const listItemType = document.createElement('li');
+    // listItemType.className = 'list-summary';
+    // listItemType.innerHTML = `<strong>Tipo:</strong> ${type}`;
+    // cardList.appendChild(listItemType);
+
+    addItem('Tipo', `${type}`, 'book-shelf-line', 'list-summary');
 
     if (type === 'singolo') {
       const value = data.get('opzione_singolo');
@@ -187,10 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const years = value.split('_')[0];
       price = value === '10_100' ? 100 : 250;
 
-      const listItemDuration = document.createElement('li');
-      listItemDuration.className = 'list-summary';
-      listItemDuration.innerHTML = `<strong>Durata:</strong> ${years} anni`;
-      ul.appendChild(listItemDuration);
+      // const listItemDuration = document.createElement('li');
+      // listItemDuration.className = 'list-summary';
+      // listItemDuration.innerHTML = `<strong>Durata:</strong> ${years} anni`;
+      // cardList.appendChild(listItemDuration);
+
+      addItem('Durata', `${years} anni`, 'hourglass-line', 'list-summary');
     }
 
     if (type === 'multipli') {
@@ -200,34 +220,42 @@ document.addEventListener('DOMContentLoaded', () => {
       const key = `${courses}_${students}_${duration}`;
       price = pricesMultipleCourses[key] || 0;
 
-      const listItemCourses = document.createElement('li');
-      listItemCourses.className = 'list-summary';
-      listItemCourses.innerHTML = `<strong>Corsi:</strong> ${courses}`;
-      ul.append(listItemCourses);
+      // const listItemCourses = document.createElement('li');
+      // listItemCourses.className = 'list-summary';
+      // listItemCourses.innerHTML = `<strong>Corsi:</strong> ${courses}`;
+      // cardList.append(listItemCourses);
 
-      const listItemStudents = document.createElement('li');
-      listItemStudents.className = 'list-summary';
-      listItemStudents.innerHTML = `<strong>Studenti:</strong> ${
-        students === 'individuale' ? 'Singolo studente' : '30 studenti'
-      }`;
-      ul.append(listItemStudents);
+      addItem('Corsi', `${courses}`, 'book-line', 'list-summary');
 
-      const listItemDuration = document.createElement('li');
-      listItemDuration.className = 'list-summary';
-      listItemDuration.innerHTML = `<strong>Durata:</strong> ${duration}`;
-      ul.append(listItemDuration);
+      // const listItemStudents = document.createElement('li');
+      // listItemStudents.className = 'list-summary';
+      // listItemStudents.innerHTML = `<strong>Studenti:</strong> ${
+      //   students === 'individuale' ? 'Singolo studente' : '30 studenti'
+      // }`;
+      // cardList.append(listItemStudents);
+
+      addItem('Strudenti', `${students === 'individuale' ? 'Singolo studente' : '30 studenti'}`, 'team-line', 'list-summary');
+
+      // const listItemDuration = document.createElement('li');
+      // listItemDuration.className = 'list-summary';
+      // listItemDuration.innerHTML = `<strong>Durata:</strong> ${duration}`;
+      // cardList.append(listItemDuration);
+
+      addItem('Durata', `${duration}`, 'hourglass-line', 'list-summary');
     }
 
     if (type === 'personalizzato') {
     }
 
-    const listItemPrice = document.createElement('li');
-    listItemPrice.className = 'list-summary';
-    listItemPrice.innerHTML = `<strong>Prezzo totale:</strong> ${price}`;
-    ul.append(listItemPrice);
+    // const listItemPrice = document.createElement('li');
+    // listItemPrice.className = 'list-summary';
+    // listItemPrice.innerHTML = `<strong>Prezzo totale:</strong> ${price}`;
+    // cardList.append(listItemPrice);
+
+    addItem('Prezzo totale', `${price}`, 'money-euro-circle-line', 'list-summary');
 
     summaryBox.textContent = '';
-    summaryBox.appendChild(ul);
+    summaryBox.appendChild(cardList);
   }
 
   form.addEventListener('change', e => {
@@ -255,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentFormStep === 0 && type === 'singolo') {
       currentFormStep = 1;
       showStep(currentFormStep);
-      updateNavigation()
+      updateNavigation();
       return;
     }
 
@@ -263,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentFormStep = steps.length - 1;
       generateSummary();
       showStep(currentFormStep);
-      updateNavigation()
+      updateNavigation();
       return;
     }
 

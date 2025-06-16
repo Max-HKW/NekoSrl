@@ -258,9 +258,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
           <!-- Step 2: Dettaglio tipo -->
           <fieldset class="step" data-step="2">
             <legend>Per quanti anni vorresti essere certificato?</legend>
-            <div class="fieldset__wrapper step2Content">
-              
-            </div>
+            <div class="fieldset__wrapper step2Content"></div>
           </fieldset>
 
           <!-- STEP 3 - Studenti -->
@@ -294,9 +292,19 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
           </fieldset>
 
           <fieldset class="step" data-step="5">
-            <legend>Riepilogo</legend>
+            <legend>Riepilogo configurazione 📋</legend>
             <div class="fieldset__wrapper">
               <div class="summary"></div>
+              <div class="summary-wrapper">
+                <label class="custom-checkbox">
+                  <input type="checkbox" name="setup" value="1000" />
+                  <span class="checkmark"></span> <span>Setup iniziale</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" name="setup" value="5000" />
+                  <span class="checkmark"></span> <span>Accesso API</span>
+                </label>
+              </div>
               <button type="submit" class="btn__summary btn">Conferma</button>
               <div id="successMessage">Operazione riuscita con successo!</div>
             </div>
@@ -304,7 +312,9 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
           <div class="feature__buttons">
             <button type="button" id="prev" disabled>Indietro</button>
-            <button type="button" id="next" data-tooltip="Scegli un'opzione !">Avanti</button>
+            <button type="button" id="next" data-tooltip="Scegli un'opzione !">
+              Avanti
+            </button>
           </div>
         </form>
       </section>
