@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     prevBtn = document.getElementById('prev'),
     nextBtn = document.getElementById('next'),
     summaryBox = document.querySelector('.summary'),
-    step2Content = document.getElementById('step2Content'),
+    step2Content = document.querySelector('.step2Content'),
     successMessage = document.getElementById('successMessage');
 
   let currentFormStep = 0;
@@ -120,11 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function showStep(currentStep) {
     steps.forEach((step, index) => {
       step.classList.toggle('active', index === currentStep);
-      circles[index].classList[`${index <= currentStep ? 'add' : 'remove'}`]('active');
+      circles[index].classList[`${index <= currentStep ? 'add' : 'remove'}`](
+        'active'
+      );
     });
-    progressBar.style.width = `${
-      ((currentStep) / (circles.length - 1)) * 100
-    }%`;
+    progressBar.style.width = `${(currentStep / (circles.length - 1)) * 100}%`;
     // prevBtn.disabled = currentStep === 0;
     validateStep();
   }
@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     label.appendChild(input);
     label.appendChild(checkmark);
     label.appendChild(document.createTextNode(' ' + labelText));
+
     return label;
   }
 
@@ -176,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const ul = document.createElement('ul');
     const listItemType = document.createElement('li');
+    listItemType.className = 'list-summary';
     listItemType.textContent = `Tipo: ${type}`;
     ul.appendChild(listItemType);
 
@@ -186,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
       price = value === '10_100' ? 100 : 250;
 
       const listItemDuration = document.createElement('li');
+      listItemDuration.className = 'list-summary';
       listItemDuration.textContent = `Durata: ${years} anni`;
       ul.appendChild(listItemDuration);
     }
@@ -198,16 +201,19 @@ document.addEventListener('DOMContentLoaded', () => {
       price = pricesMultipleCourses[key] || 0;
 
       const listItemCourses = document.createElement('li');
+      listItemCourses.className = 'list-summary';
       listItemCourses.textContent = `Corsi: ${courses}`;
       ul.append(listItemCourses);
 
       const listItemStudents = document.createElement('li');
+      listItemStudents.className = 'list-summary';
       listItemStudents.textContent = `Studenti: ${
         students === 'individuale' ? 'Singolo studente' : '30 studenti'
       }`;
       ul.append(listItemStudents);
 
       const listItemDuration = document.createElement('li');
+      listItemDuration.className = 'list-summary';
       listItemDuration.textContent = `Durata: ${duration}`;
       ul.append(listItemDuration);
     }
@@ -216,6 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const listItemPrice = document.createElement('li');
+    listItemPrice.className = 'list-summary';
     listItemPrice.textContent = `Prezzo totale: ${price}`;
     ul.append(listItemPrice);
 
@@ -233,12 +240,22 @@ document.addEventListener('DOMContentLoaded', () => {
     validateStep();
   });
 
+  function updateNavigation() {
+    if (currentFormStep === steps.length - 1) {
+      generateSummary();
+      nextBtn.style.display = 'none';
+    } else {
+      nextBtn.style.display = 'block';
+    }
+  }
+
   nextBtn.addEventListener('click', () => {
     const type = form.querySelector('input[name="tipo"]:checked')?.value;
 
     if (currentFormStep === 0 && type === 'singolo') {
       currentFormStep = 1;
       showStep(currentFormStep);
+      updateNavigation()
       return;
     }
 
@@ -246,13 +263,20 @@ document.addEventListener('DOMContentLoaded', () => {
       currentFormStep = steps.length - 1;
       generateSummary();
       showStep(currentFormStep);
+      updateNavigation()
       return;
     }
 
     currentFormStep++;
     showStep(currentFormStep);
 
-    if (currentFormStep === steps.length - 1) generateSummary();
+    // if (currentFormStep === steps.length - 1) {
+    //   generateSummary();
+    //   nextBtn.style.display = 'none';
+    // } else {
+    //   nextBtn.style.display = 'block';
+    // }
+    updateNavigation();
   });
 
   prevBtn.addEventListener('click', () => {
@@ -263,6 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     showStep(currentFormStep);
     successMessage.style.display = 'none';
+    updateNavigation();
   });
 
   form.addEventListener('submit', e => {
