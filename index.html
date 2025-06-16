@@ -236,18 +236,20 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
           <!-- STEP 1 -->
           <fieldset class="step active" data-step="1">
             <legend>Di quanti corsi hai bisogno?</legend>
+
             <div class="fieldset__wrapper">
               <label class="custom-checkbox">
                 <input type="checkbox" name="tipo" value="singolo" />
                 <span class="checkmark"></span> Corso singolo
               </label>
+
               <label class="custom-checkbox">
                 <input type="checkbox" name="tipo" value="multipli" />
                 <span class="checkmark"></span> Corsi multipli
               </label>
+
               <label class="custom-checkbox">
-                <input
-                  type="checkbox" name="tipo" value="personalizzato"/>
+                <input type="checkbox" name="tipo" value="personalizzato" />
                 <span class="checkmark"></span> Personalizzato
               </label>
             </div>
@@ -256,7 +258,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
           <!-- Step 2: Dettaglio tipo -->
           <fieldset class="step" data-step="2">
             <legend>Per quanti anni vorresti essere certificato?</legend>
-            <div id="step2Content"></div>
+            <div class="fieldset__wrapper step2Content"></div>
           </fieldset>
 
           <!-- STEP 3 - Studenti -->
@@ -264,19 +266,11 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             <legend>Da quanti studenti è composto il tuo corso?</legend>
             <div class="fieldset__wrapper">
               <label class="custom-checkbox">
-                <input
-                  type="checkbox"
-                  name="studenti"
-                  value="individuale"
-                />
+                <input type="checkbox" name="studenti" value="individuale" />
                 <span class="checkmark"></span> Singolo studente
               </label>
               <label class="custom-checkbox">
-                <input
-                  type="checkbox"
-                  name="studenti"
-                  value="30studenti"
-                />
+                <input type="checkbox" name="studenti" value="30studenti" />
                 <span class="checkmark"></span> 30 studenti
               </label>
             </div>
@@ -287,26 +281,40 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             <legend>Per quanti anni vorresti essere certificato?</legend>
             <div class="fieldset__wrapper">
               <label class="custom-checkbox">
-                <input type="checkbox" name="durata" value="10"/>
+                <input type="checkbox" name="durata" value="10" />
                 <span class="checkmark"></span> 10 anni
               </label>
               <label class="custom-checkbox">
-                <input type="checkbox" name="durata" value="100"/>
+                <input type="checkbox" name="durata" value="100" />
                 <span class="checkmark"></span> 100 anni
               </label>
             </div>
           </fieldset>
 
           <fieldset class="step" data-step="5">
-            <legend>Riepilogo</legend>
-            <div class="summary"></div>
-            <button type="submit">Conferma</button>
-            <div id="successMessage">Operazione riuscita con successo!</div>
+            <legend>Riepilogo configurazione 📋</legend>
+            <div class="fieldset__wrapper">
+              <div class="summary"></div>
+              <div class="summary-wrapper">
+                <label class="custom-checkbox">
+                  <input type="checkbox" name="setup" value="1000" />
+                  <span class="checkmark"></span> <span>Setup iniziale</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" name="setup" value="5000" />
+                  <span class="checkmark"></span> <span>Accesso API</span>
+                </label>
+              </div>
+              <button type="submit" class="btn__summary btn">Conferma</button>
+              <div id="successMessage">Operazione riuscita con successo!</div>
+            </div>
           </fieldset>
 
           <div class="feature__buttons">
             <button type="button" id="prev" disabled>Indietro</button>
-            <button type="button" id="next">Avanti</button>
+            <button type="button" id="next" data-tooltip="Scegli un'opzione !">
+              Avanti
+            </button>
           </div>
         </form>
       </section>
