@@ -317,6 +317,30 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             </button>
           </div>
         </form>
+
+        <div class="modal hidden" id="modal">
+          <form id="personalDataForm">
+            <fieldset>
+              <legend>Configurazione personalizzata</legend>
+              <div class="fieldset__wrapper">
+                <label>
+                  Nome completo:
+                  <input type="text" name="nome"/>
+                </label>
+                <label>
+                  Email:
+                  <input type="email" name="email"/>
+                </label>
+                <label>
+                  Dettagli configurazione:
+                  <textarea name="messaggio"></textarea>
+                </label>
+                <button type="submit" id="confirmBtn">Conferma configurazione</button>
+                <button id="backBtn">Indietro</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
       </section>
     </main>
   </body>

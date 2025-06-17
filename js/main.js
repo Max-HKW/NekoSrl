@@ -88,7 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn = document.getElementById('next'),
     summaryBox = document.querySelector('.summary'),
     step2Content = document.querySelector('.step2Content'),
-    successMessage = document.getElementById('successMessage');
+    successMessage = document.getElementById('successMessage'),
+    modal = document.getElementById('modal'),
+    personalDataForm = document.getElementById('personalDataForm'),
+    confirmBtn = document.getElementById('confirmBtn'),
+    backBtn = document.getElementById('backBtn');
 
   let currentFormStep = 0;
   let currentType = '';
@@ -111,10 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function validateStep() {
-    const formInputs = steps[currentFormStep].querySelectorAll(
+    const formCheckboxInput = steps[currentFormStep].querySelectorAll(
       'input[type="checkbox"]'
     );
-    nextBtn.disabled = !Array.from(formInputs).some(input => input.checked);
+
+    nextBtn.disabled = !Array.from(formCheckboxInput).some(
+      input => input.checked
+    );
   }
 
   function showStep(currentStep) {
@@ -234,7 +241,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // }`;
       // cardList.append(listItemStudents);
 
-      addItem('Strudenti', `${students === 'individuale' ? 'Singolo studente' : '30 studenti'}`, 'team-line', 'list-summary');
+      addItem(
+        'Strudenti',
+        `${students === 'individuale' ? 'Singolo studente' : '30 studenti'}`,
+        'team-line',
+        'list-summary'
+      );
 
       // const listItemDuration = document.createElement('li');
       // listItemDuration.className = 'list-summary';
@@ -245,6 +257,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (type === 'personalizzato') {
+      const personalData = new FormData(personalDataForm);
+      const name = personalData.get('nome');
+      const email = personalData.get('email');
+      const message = personalData.get('messaggio');
+
+      if (name && email && message) {
+        addItem('Nome', name, 'user-line', 'list-summary');
+        addItem('Email', email, 'mail-line', 'list-summary');
+        addItem('Messaggio', message, 'chat-1-line', 'list-summary');
+      }
     }
 
     // const listItemPrice = document.createElement('li');
@@ -252,7 +274,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // listItemPrice.innerHTML = `<strong>Prezzo totale:</strong> ${price}`;
     // cardList.append(listItemPrice);
 
-    addItem('Prezzo totale', `${price}`, 'money-euro-circle-line', 'list-summary');
+    addItem(
+      'Prezzo totale',
+      `${price}`,
+      'money-euro-circle-line',
+      'list-summary'
+    );
 
     summaryBox.textContent = '';
     summaryBox.appendChild(cardList);
@@ -295,6 +322,21 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    if (currentFormStep === 0 && type === 'personalizzato') {
+      modal.classList.remove('hidden');
+      nextBtn.style.display = 'none';
+      prevBtn.style.display = 'none';
+      return;
+    }
+
+    // if (currentFormStep === 5 && type === 'personalizzato') {
+    //   currentFormStep = steps.length - 1;
+    //   generateSummary();
+    //   showStep(currentFormStep);
+    //   updateNavigation();
+    //   return;
+    // }
+
     currentFormStep++;
     showStep(currentFormStep);
 
@@ -305,6 +347,39 @@ document.addEventListener('DOMContentLoaded', () => {
     //   nextBtn.style.display = 'block';
     // }
     updateNavigation();
+  });
+
+  personalDataForm.addEventListener('submit', e => {
+    e.preventDefault();
+  });
+
+  confirmBtn.addEventListener('click', () => {
+    const name = personalDataForm.querySelector('[name="nome"]').value.trim();
+    const email = personalDataForm.querySelector('[name="email"]').value.trim();
+    const message = personalDataForm
+      .querySelector('[name="messaggio"]')
+      .value.trim();
+
+    if (!name || !email || !message) {
+      alert('Compila tutti i campi prima di continuare.');
+      return;
+    }
+
+    modal.classList.add('hidden');
+    currentFormStep = steps.length - 1;
+    generateSummary();
+    showStep(currentFormStep);
+    updateNavigation();
+  });
+
+  backBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    currentFormStep = 0;
+    generateSummary();
+    showStep(currentFormStep);
+    updateNavigation();
+    nextBtn.style.display = 'block';
+    prevBtn.style.display = 'block';
   });
 
   prevBtn.addEventListener('click', () => {
