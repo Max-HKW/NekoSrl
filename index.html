@@ -212,7 +212,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
       <section class="feature section container" id="feature">
         <div class="feature__header">
-          <h2 class="feature__title title">
+          <h2 class="feature__title title" id="featureTitle">
             Configura l’offerta su misura per la tua realtà
           </h2>
           <h3 class="feature__subtitle subtitle">
@@ -296,17 +296,21 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             <div class="fieldset__wrapper">
               <div class="summary"></div>
               <div class="summary-wrapper">
+                <!-- <label class="custom-checkbox">
+                  <input type="checkbox" id="api" name="setup" value="1000" />
+                  <span class="checkmark"></span> <span class="optionalChoices" data-tooltip="+ 1000 €">Setup iniziale</span>
+                </label> -->
                 <label class="custom-checkbox">
-                  <input type="checkbox" name="setup" value="1000" />
-                  <span class="checkmark"></span> <span>Setup iniziale</span>
-                </label>
-                <label class="custom-checkbox">
-                  <input type="checkbox" name="setup" value="5000" />
-                  <span class="checkmark"></span> <span>Accesso API</span>
+                  <input type="checkbox" id="setup" name="setup" value="5000" />
+                  <span class="checkmark"></span>
+                  <span class="optionalChoices" data-tooltip="+ 5000 €"
+                    >Accesso API</span
+                  >
                 </label>
               </div>
-              <button type="submit" class="btn__summary btn">Conferma</button>
-              <div id="successMessage">Operazione riuscita con successo!</div>
+              <button type="submit" class="btn__summary btn" id="btnSummary">
+                Conferma
+              </button>
             </div>
           </fieldset>
 
@@ -318,29 +322,41 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
           </div>
         </form>
 
-        <div class="modal hidden" id="modal">
+        <div id="successMessage">
+          <i class="ri-check-double-line"></i>
+          <p>Operazione avvenuta con successo !</p>
+        </div>
+
+        <dialog class="modal" id="modal">
           <form id="personalDataForm">
-            <fieldset>
-              <legend>Configurazione personalizzata</legend>
-              <div class="fieldset__wrapper">
+            <fieldset class="personal-data-field">
+              <legend class="personal-data-legend">Configurazione personalizzata</legend>
+              <div class="fieldset__wrapper personal-data-wrapper">
                 <label>
                   Nome completo:
-                  <input type="text" name="nome"/>
+                  <input type="text" name="nome" placeholder="Inserisci il nome " />
                 </label>
+
                 <label>
                   Email:
-                  <input type="email" name="email"/>
+                  <input type="email" name="email" />
                 </label>
+
                 <label>
                   Dettagli configurazione:
-                  <textarea name="messaggio"></textarea>
+                  <textarea name="messaggio" class="personal-text"></textarea>
                 </label>
-                <button type="submit" id="confirmBtn">Conferma configurazione</button>
-                <button id="backBtn">Indietro</button>
+
+                <div class="modal-buttons">
+                  <button id="backBtn">Indietro</button>
+                  <button type="submit" id="confirmBtn">
+                    Conferma configurazione
+                  </button>
+                </div>
               </div>
             </fieldset>
           </form>
-        </div>
+        </dialog>
       </section>
     </main>
   </body>
