@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // cardList.append(listItemStudents);
 
       addItem(
-        'Strudenti',
+        'Studenti',
         `${students === 'individuale' ? 'Singolo studente' : '30 studenti'}`,
         'team-line',
         'list-summary'
