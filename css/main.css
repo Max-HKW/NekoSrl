@@ -839,11 +839,13 @@ fieldset.step.active {
   gap: 0.5rem;
 }
 
-#next {
+#next,
+#confirmBtn {
   position: relative;
 }
 
-#next::after {
+#next::after,
+#confirmBtn::after {
   position: absolute;
   content: attr(data-tooltip);
   inset: -45% auto auto 50%;
@@ -863,6 +865,12 @@ fieldset.step.active {
   opacity: 1;
   visibility: visible;
   inset-block-start: -80%;
+}
+
+#confirmBtn:disabled:hover::after {
+  opacity: 1;
+  visibility: visible;
+  inset-block-start: -95%;
 }
 
 dialog {
