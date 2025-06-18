@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 :root {
   --header-height: 3.5rem;
@@ -27,7 +27,7 @@
 
   /* FONT */
 
-  --primary-font: "Lato", sans-serif;
+  --primary-font: 'Lato', sans-serif;
 
   --big-font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
   --h1-font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
@@ -613,6 +613,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.go-back-btn {
+  cursor: pointer;
+}
+
 /* FORM */
 
 #successMessage {
@@ -624,6 +628,7 @@ button:disabled {
   top: 50%; */
   width: 100%;
   position: relative;
+  animation: fade-in-up 0.8s ease-out forwards;
 }
 
 #successMessage i {
@@ -643,6 +648,20 @@ button:disabled {
   margin-top: 4rem;
   font-size: var(--h2-font-size);
   text-align: center;
+  margin-bottom: 1rem;
+}
+
+#successMessage button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 16rem;
+}
+
+@media (min-width: 946px) {
+  #successMessage button {
+    margin-top: 12rem;
+  }
 }
 
 #feature__form {
@@ -741,6 +760,23 @@ fieldset.step.active {
   }
 }
 
+.fieldset__wrapper-summary {
+  flex-direction: column;
+}
+
+.apiLabel {
+  display: flex;
+  align-items: center;
+}
+
+.apiLabel i {
+  margin-right: 0.2rem;
+}
+
+.apiLabel span:first-of-type {
+  margin-right: 0.5rem;
+}
+
 .custom-checkbox input {
   display: none;
 }
@@ -755,7 +791,7 @@ fieldset.step.active {
 }
 
 .custom-checkbox input:checked + .checkmark::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 2px;
   left: 5px;
@@ -803,11 +839,13 @@ fieldset.step.active {
   gap: 0.5rem;
 }
 
-#next {
+#next,
+#confirmBtn {
   position: relative;
 }
 
-#next::after {
+#next::after,
+#confirmBtn::after {
   position: absolute;
   content: attr(data-tooltip);
   inset: -45% auto auto 50%;
@@ -829,10 +867,17 @@ fieldset.step.active {
   inset-block-start: -80%;
 }
 
+#confirmBtn:disabled:hover::after {
+  opacity: 1;
+  visibility: visible;
+  inset-block-start: -95%;
+}
+
 dialog {
   border: none;
   border-radius: 1rem;
   padding: 1rem 2rem;
+  animation: fade-in-up 0.8s ease-out forwards;
 }
 
 dialog[open] {
@@ -867,6 +912,11 @@ dialog::backdrop {
   display: block;
   margin-top: 0.5rem;
   width: 100%;
+  padding: 1rem 1.5rem;
+}
+
+.personal-data-wrapper label input::placeholder {
+  color: #8f8f8f;
 }
 
 .personal-data-wrapper label textarea {
@@ -882,6 +932,23 @@ dialog::backdrop {
   font-family: inherit;
   width: 100%;
   margin-top: 0.5rem;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.modal-buttons button {
+  width: 50%;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  height: max-content;
+}
+
+.modal-buttons button:hover {
+  padding: 0.5rem 1rem;
 }
 
 /* BREAKPOINTS */
