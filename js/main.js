@@ -429,6 +429,13 @@ document.addEventListener('DOMContentLoaded', () => {
     btnSummary.style.display = 'inline-block';
     apiLabel.style.display = 'flex';
     apiCheckbox.checked = false;
+    const formCheckboxInput = steps[currentFormStep].querySelectorAll(
+      'input[type="checkbox"]'
+    );
+    formCheckboxInput.forEach(checkbox => {
+      checkbox.checked = false;
+    });
+    nextBtn.disabled = true;
   });
 
   goBackBtn.addEventListener('click', () => {
