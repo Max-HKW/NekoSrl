@@ -469,7 +469,8 @@ svg {
 
   transform: scale(var(--scale));
 
-  height: var(--stacked-card-height);
+  /* height: var(--stacked-card-height); */
+  height: 100%;
   width: 75vw;
   padding: 2rem;
   display: flex;
