@@ -764,6 +764,10 @@ fieldset.step.active {
   inset-block-start: -80%;
 }
 
+.hidden {
+  display: none;
+}
+
 /* BREAKPOINTS */
 
 /* FOR LARGE DEVICES */
