@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 :root {
   --header-height: 3.5rem;
@@ -27,7 +27,7 @@
 
   /* FONT */
 
-  --primary-font: 'Lato', sans-serif;
+  --primary-font: "Lato", sans-serif;
 
   --big-font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
   --h1-font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
@@ -96,6 +96,7 @@ a {
 
 html {
   scroll-behavior: smooth;
+  /* overflow-y: auto; */
   font-size: 16px;
 }
 
@@ -618,7 +619,7 @@ button:disabled {
 }
 
 #feature__form {
-  max-width: 600px;
+  max-width: 900px;
   margin: auto;
 }
 
@@ -666,13 +667,30 @@ fieldset.step.active {
   align-items: center;
 }
 
+.optionalChoices {
+  color: var(--on-surface);
+  position: relative;
+}
+.optionalChoices::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  width: 100%;
+  background-color: #000;
+}
+
+.optionalChoices:hover {
+  
+}
+
 /* .custom-checkbox:not(:last-child) {
   margin-bottom: 1rem;
 } */
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .fieldset__wrapper {
     flex-direction: row;
+    justify-content: space-around;
   }
 }
 
@@ -690,7 +708,7 @@ fieldset.step.active {
 }
 
 .custom-checkbox input:checked + .checkmark::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 2px;
   left: 5px;
@@ -707,12 +725,11 @@ fieldset.step.active {
   align-items: center;
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .card-list {
     align-items: flex-start;
   }
 }
-
 
 .list-summary {
   color: var(--secondary);
@@ -730,7 +747,7 @@ fieldset.step.active {
 }
 
 .btn__summary:hover {
-  padding: 0.5rem 1rem;;
+  padding: 0.5rem 1rem;
 }
 
 .summary-wrapper {
@@ -774,7 +791,6 @@ fieldset.step.active {
 /* FOR LARGE DEVICES */
 
 @media (min-width: 1150px) {
-
   .container {
     margin: 0 auto;
   }
@@ -798,7 +814,8 @@ fieldset.step.active {
   }
 
   .about {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
   }
 
   .about__content {
