@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // }`;
       // cardList.append(listItemStudents);
 
-      addItem('Strudenti', `${students === 'individuale' ? 'Singolo studente' : '30 studenti'}`, 'team-line', 'list-summary');
+      addItem('Studenti', `${students === 'individuale' ? 'Singolo studente' : '30 studenti'}`, 'team-line', 'list-summary');
 
       // const listItemDuration = document.createElement('li');
       // listItemDuration.className = 'list-summary';
