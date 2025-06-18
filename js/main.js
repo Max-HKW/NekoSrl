@@ -112,6 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentFormStep = 0;
   let currentType = '';
 
+  if (currentFormStep === 0) {
+    prevBtn.disabled = true;
+  }
+
   const pricesMultipleCourses = {
     '10_individuale_10': 300,
     '10_individuale_100': 750,
@@ -327,6 +331,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       nextBtn.style.display = 'block';
     }
+
+    prevBtn.disabled = currentFormStep === 0;
   }
 
   nextBtn.addEventListener('click', () => {
@@ -413,8 +419,16 @@ document.addEventListener('DOMContentLoaded', () => {
     generateSummary();
     showStep(currentFormStep);
     updateNavigation();
+     const formCheckboxInput = steps[currentFormStep].querySelectorAll(
+      'input[type="checkbox"]'
+    );
+    formCheckboxInput.forEach(checkbox => {
+      checkbox.checked = false;
+    });
     nextBtn.style.display = 'block';
+    nextBtn.disabled = true;
     prevBtn.style.display = 'block';
+    prevBtn.disabled = true;
   });
 
   prevBtn.addEventListener('click', () => {
@@ -451,6 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
       checkbox.checked = false;
     });
     nextBtn.disabled = true;
+    prevBtn.disabled = true;
   });
 
   form.addEventListener('submit', e => {
