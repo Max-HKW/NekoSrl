@@ -697,21 +697,18 @@ fieldset.step.active {
   align-items: center;
   margin-bottom: 1rem;
   margin-top: 1rem;
-  /* margin-left: 30%; */
-  /* justify-content: space-between; */
   gap: 2rem;
-  justify-content: center;
   position: relative;
 }
 
 .custom-checkbox {
   display: flex;
-  /* align-items: flex-start; */
+  width: 150px;
   cursor: pointer;
   color: var(--secondary);
   font-size: var(--h3-font-size);
   font-weight: var(--font-semi-bold);
-  /* margin-inline: auto; */
+  text-align: center;
   align-items: center;
 }
 
