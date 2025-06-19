@@ -53,7 +53,8 @@
   --stacked-card-count: 4;
   --stacked-card-height: 25vh;
   --card-offset-top-inside: 1.5em;
-  --card-stack-overlap-gap: 6vw;
+  /* --card-stack-overlap-gap: 6vw; */
+  --card-stack-overlap-gap: 3rem;
 }
 
 *,
