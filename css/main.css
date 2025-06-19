@@ -13,7 +13,7 @@
   --secondary: #c16766;
   --secondary-hover: #db8c8b;
   --on-surface: #535353;
-  --blur-color: rgba(255, 255, 255, 0.9);
+  --blur-color: rgba(255, 255, 255, 0.95);
   --blur-color-variant: rgba(255, 255, 255, 0.45);
 
   --btn-gradient: linear-gradient(90deg, #3bad83 0%, #1d7f63 100%);
