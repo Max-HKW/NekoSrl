@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 :root {
   --header-height: 3.5rem;
@@ -27,7 +27,7 @@
 
   /* FONT */
 
-  --primary-font: 'Lato', sans-serif;
+  --primary-font: "Lato", sans-serif;
 
   --big-font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
   --h1-font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
@@ -179,9 +179,9 @@ svg {
 
 /* CHANCGE BACKGROUND HEADER */
 
-.bg-header {
-  background-color: var(--header-alternative);
-}
+/* .bg-header {
+  background: var(--btn-gradient);
+} */
 
 /* NAV */
 
@@ -716,14 +716,40 @@ fieldset.step.active {
 }
 
 .optionalChoices {
-  color: var(--on-surface);
+  /* color: var(--on-surface); */
   position: relative;
+  margin-top: 0.5rem;
+  display: flex;
+  /* align-items: flex-start; */
+  cursor: pointer;
+  color: var(--secondary);
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+  /* margin-inline: auto; */
+  align-items: center;
+  width: 100%;
 }
+.optionalChoices input {
+  display: none;
+}
+
+.optionalChoices input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--first-card);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
 .optionalChoices::after {
   position: absolute;
   content: attr(data-tooltip);
   top: 100%;
-  left: 110%;
+  left: 69%;
   transform: translateY(-50%);
   background-color: var(--primary);
   color: var(--white-color);
@@ -738,7 +764,8 @@ fieldset.step.active {
   white-space: nowrap;
 }
 
-.optionalChoices:hover::after {
+.optionalChoices:hover::after,
+.optionalChoices.active::after {
   opacity: 1;
   visibility: visible;
   top: 50%;
@@ -766,8 +793,8 @@ fieldset.step.active {
 }
 
 .apiLabel {
-  display: flex;
-  align-items: center;
+  display: none;
+  /* align-items: center; */
 }
 
 .apiLabel i {
@@ -792,7 +819,7 @@ fieldset.step.active {
 }
 
 .custom-checkbox input:checked + .checkmark::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 2px;
   left: 5px;
@@ -814,11 +841,19 @@ fieldset.step.active {
     align-items: flex-start;
   }
 }
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+}
 
 .list-summary {
   color: var(--secondary);
   font-size: var(--h3-font-size);
   /* font-weight: var(--font-semi-bold); */
+  width: 100%;
 }
 .list-summary:not(:last-child) {
   margin-bottom: 0.5rem;
@@ -832,6 +867,7 @@ fieldset.step.active {
 
 .btn__summary:hover {
   padding: 0.5rem 1rem;
+  /* margin-top: 0.5rem; */
 }
 
 .summary-wrapper {

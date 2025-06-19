@@ -49,14 +49,14 @@ cards.forEach((card) => observer.observe(card));
 
 // CHANGE HEADER BACKGROUND
 
-const bgHeader = () => {
-  const header = document.getElementById("header");
-  window.scrollY >= 50
-    ? header.classList.add("bg-header")
-    : header.classList.remove("bg-header");
-};
+// const bgHeader = () => {
+//   const header = document.getElementById("header");
+//   window.scrollY >= 50
+//     ? header.classList.add("bg-header")
+//     : header.classList.remove("bg-header");
+// };
 
-window.addEventListener("scroll", bgHeader);
+// window.addEventListener("scroll", bgHeader);
 
 // FORM STEP
 
@@ -158,12 +158,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createCheckBox(name, value, labelText) {
     const label = document.createElement("label");
-    label.className = "custom-checkbox";
+    label.classList.add("custom-checkbox");
 
     const input = document.createElement("input");
     input.type = "checkbox";
     input.name = name;
     input.value = value;
+    // input.setAttribute('data-tooltip', '5000');
+
+    const checkmark = document.createElement("span");
+    checkmark.className = "checkmark";
+    label.appendChild(input);
+    label.appendChild(checkmark);
+    label.appendChild(document.createTextNode(" " + labelText));
+
+    return label;
+  }
+
+  function createApiCheckBox(name, value, labelText) {
+    const label = document.createElement("label");
+    label.classList.add("optionalChoices");
+    label.setAttribute("data-tooltip", "+ 5000 €"); // <-- Spostato qui
+
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.name = name;
+    input.value = value;
+
+    input.addEventListener("change", () => {
+      if (input.checked) {
+        label.classList.add("active");
+      } else {
+        label.classList.remove("active");
+      }
+    });
 
     const checkmark = document.createElement("span");
     checkmark.className = "checkmark";
@@ -297,7 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (type !== "personalizzato") {
       addItem(
-        "Prezzo totale",
+        "Prezzo pacchetto",
         `${price} €`,
         "money-euro-circle-line",
         "list-summary"
@@ -306,13 +334,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     addItem("Setup iniziale", "+ 1000 €", "settings-4-line", "list-summary");
 
-    apiOptionalChoice.addEventListener("click", () => {
-      addItem("Accesso API", "+ 5000 €", "bug-line", "list-summary");
-      apiLabel.style.display = "none";
-    });
+    // apiOptionalChoice.addEventListener("click", () => {
+    //   apiLabel.style.display = "none";
+    //   addItem("Accesso API", "+ 5000 €", "bug-line", "list-summary");
+    // });
+
+    // const apiInput = document.createElement('input');
+    // apiInput.type = "checkbox";
+    // apiInput.className = 'optionalChoices';
+    // apiInput.setAttribute('data-tooltip', '+ 5000');
 
     summaryBox.textContent = "";
     summaryBox.appendChild(cardList);
+    summaryBox.appendChild(
+      createApiCheckBox("accesso_api", "5000", "Accesso API")
+    );
+    summaryBox.appendChild(btnSummary);
+    btnSummary.style.display = "inline-block";
   }
 
   form.addEventListener("change", (e) => {
@@ -329,8 +367,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentFormStep === steps.length - 1) {
       generateSummary();
       nextBtn.style.display = "none";
+      btnSummary.style.display = "inline-block";
     } else {
       nextBtn.style.display = "block";
+      btnSummary.style.display = "none";
     }
 
     prevBtn.disabled = currentFormStep === 0;
@@ -364,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (currentFormStep === steps.length - 1) {
-      btnSummary.style.display = 'inline-block';
+      btnSummary.style.display = "block";
     }
 
     // if (currentFormStep === 5 && type === 'personalizzato') {
@@ -439,24 +479,47 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   prevBtn.addEventListener("click", () => {
-    if (currentType === "singolo" && currentFormStep === steps.length - 1) {
-      currentFormStep = 1;
+    // if ((currentType === "singolo" && currentFormStep === steps.length - 1) || (currentType === "multipli" && currentFormStep === steps.length - 1) || (currentType === "personalizzato" && currentFormStep === steps.length - 1) ) {
+    //   currentFormStep = 0;
+    // } else {
+    //   currentFormStep--;
+    // }
+
+    // showStep(currentFormStep);
+    // successMessage.style.display = "none";
+    // updateNavigation();
+    // btnSummary.style.display = "inline-block";
+    // apiLabel.style.display = "flex";
+    // apiCheckbox.checked = false;
+
+    // const formCheckboxInput = steps[currentFormStep].querySelectorAll(
+    //   'input[type="checkbox"]'
+    // );
+    // formCheckboxInput.forEach((checkbox) => {
+    //   checkbox.checked = false;
+    // });
+    // nextBtn.disabled = true;
+    if (currentFormStep === steps.length - 1) {
+      currentFormStep = 0;
     } else {
       currentFormStep--;
     }
+
     showStep(currentFormStep);
-    successMessage.style.display = "none";
     updateNavigation();
+
+    successMessage.style.display = "none";
     btnSummary.style.display = "inline-block";
     apiLabel.style.display = "flex";
     apiCheckbox.checked = false;
+    nextBtn.disabled = true;
+
     const formCheckboxInput = steps[currentFormStep].querySelectorAll(
       'input[type="checkbox"]'
     );
     formCheckboxInput.forEach((checkbox) => {
       checkbox.checked = false;
     });
-    nextBtn.disabled = true;
   });
 
   goBackBtn.addEventListener("click", () => {
