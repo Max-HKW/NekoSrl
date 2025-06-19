@@ -1,42 +1,42 @@
 // SHOW MENU
 
-const navMenu = document.getElementById('nav-menu'),
-  navToggle = document.getElementById('nav-toggle'),
-  nav = document.querySelector('.nav');
+const navMenu = document.getElementById("nav-menu"),
+  navToggle = document.getElementById("nav-toggle"),
+  nav = document.querySelector(".nav");
 
 if (navToggle) {
-  navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('show-menu');
-    nav.classList.toggle('nav__open');
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("show-menu");
+    nav.classList.toggle("nav__open");
   });
 }
 
-const navLinks = document.querySelectorAll('.nav__link');
+const navLinks = document.querySelectorAll(".nav__link");
 
 const linkAction = () => {
-  navMenu.classList.remove('show-menu');
+  navMenu.classList.remove("show-menu");
 };
 
-navLinks.forEach(link => {
-  link.addEventListener('click', linkAction);
+navLinks.forEach((link) => {
+  link.addEventListener("click", linkAction);
 });
 
 // CARD ANIMATION
 
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll(".card");
 
 const observer = new IntersectionObserver(
-  entries => {
+  (entries) => {
     let delay = 0;
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         // Imposta un delay crescente per ogni card
         entry.target.style.transitionDelay = `${delay}s`;
-        entry.target.classList.add('animate');
+        entry.target.classList.add("animate");
         delay += 0.2; // aumenta il delay per la prossima card
       } else {
-        entry.target.classList.remove('animate');
-        entry.target.style.transitionDelay = '0s';
+        entry.target.classList.remove("animate");
+        entry.target.style.transitionDelay = "0s";
       }
     });
   },
@@ -45,30 +45,30 @@ const observer = new IntersectionObserver(
   }
 );
 
-cards.forEach(card => observer.observe(card));
+cards.forEach((card) => observer.observe(card));
 
 // CHANGE HEADER BACKGROUND
 
 const bgHeader = () => {
-  const header = document.getElementById('header');
+  const header = document.getElementById("header");
   window.scrollY >= 50
-    ? header.classList.add('bg-header')
-    : header.classList.remove('bg-header');
+    ? header.classList.add("bg-header")
+    : header.classList.remove("bg-header");
 };
 
-window.addEventListener('scroll', bgHeader);
+window.addEventListener("scroll", bgHeader);
 
 // FORM STEP
 
-document.addEventListener('DOMContentLoaded', () => {
-  const circles = document.querySelectorAll('.feature__circle'),
-    progressBar = document.querySelector('.feature__indicator'),
-    buttons = document.querySelectorAll('.feature__buttons button');
+document.addEventListener("DOMContentLoaded", () => {
+  const circles = document.querySelectorAll(".feature__circle"),
+    progressBar = document.querySelector(".feature__indicator"),
+    buttons = document.querySelectorAll(".feature__buttons button");
 
   let currentStep = 1;
 
-  const updateStep = e => {
-    currentStep = e.target.id === 'next' ? ++currentStep : --currentStep;
+  const updateStep = (e) => {
+    currentStep = e.target.id === "next" ? ++currentStep : --currentStep;
 
     // circles.forEach((circle, index) => {
     //   circle.classList[`${index < currentStep ? 'add' : 'remove'}`]('active');
@@ -83,52 +83,53 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (currentStep === 1) {
       buttons[0].disabled = true;
     } else {
-      buttons.forEach(button => (button.disabled = false));
+      buttons.forEach((button) => (button.disabled = false));
     }
   };
 
-  buttons.forEach(button => {
-    button.addEventListener('click', updateStep);
+  buttons.forEach((button) => {
+    button.addEventListener("click", updateStep);
   });
 
   // WIZARD FORM
 
-  const form = document.getElementById('feature__form'),
-    steps = Array.from(document.querySelectorAll('fieldset.step')),
-    prevBtn = document.getElementById('prev'),
-    nextBtn = document.getElementById('next'),
-    summaryBox = document.querySelector('.summary'),
-    step2Content = document.querySelector('.step2Content'),
-    successMessage = document.getElementById('successMessage'),
-    modal = document.getElementById('modal'),
-    personalDataForm = document.getElementById('personalDataForm'),
-    confirmBtn = document.getElementById('confirmBtn'),
-    backBtn = document.getElementById('backBtn'),
-    apiOptionalChoice = document.querySelector('.optionalChoices'),
-    apiLabel = document.querySelector('.apiLabel'),
-    apiCheckbox = document.querySelector('.apiCheckbox'),
-    goBackBtn = document.querySelector('.go-back-btn');
+  const form = document.getElementById("feature__form"),
+    steps = Array.from(document.querySelectorAll("fieldset.step")),
+    prevBtn = document.getElementById("prev"),
+    nextBtn = document.getElementById("next"),
+    summaryBox = document.querySelector(".summary"),
+    step2Content = document.querySelector(".step2Content"),
+    successMessage = document.getElementById("successMessage"),
+    modal = document.getElementById("modal"),
+    personalDataForm = document.getElementById("personalDataForm"),
+    confirmBtn = document.getElementById("confirmBtn"),
+    backBtn = document.getElementById("backBtn"),
+    apiOptionalChoice = document.querySelector(".optionalChoices"),
+    apiLabel = document.querySelector(".apiLabel"),
+    apiCheckbox = document.querySelector(".apiCheckbox"),
+    goBackBtn = document.querySelector(".go-back-btn"),
+    btnSummary = document.getElementById("btnSummary");
 
   let currentFormStep = 0;
-  let currentType = '';
+  let currentType = "";
 
   if (currentFormStep === 0) {
     prevBtn.disabled = true;
   }
 
   const pricesMultipleCourses = {
-    '10_individuale_10': 300,
-    '10_individuale_100': 750,
-    '10_30studenti_10': 500,
-    '10_30studenti_100': 1250,
-    '50_individuale_10': 800,
-    '50_individuale_100': 2000,
-    '50_30studenti_10': 1000,
-    '50_30studenti_100': 2500,
+    "10_individuale_10": 300,
+    "10_individuale_100": 750,
+    "10_30studenti_10": 500,
+    "10_30studenti_100": 1250,
+    "50_individuale_10": 800,
+    "50_individuale_100": 2000,
+    "50_30studenti_10": 1000,
+    "50_30studenti_100": 2500,
   };
 
   function uncheckOtherCheckbox(name, current) {
-    document.querySelectorAll(`input[name="${name}"]`).forEach(box => {
+    document.querySelectorAll(`input[name="${name}"]`).forEach((box) => {
       if (box !== current) box.checked = false;
     });
   }
@@ -139,15 +140,15 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     nextBtn.disabled = !Array.from(formCheckboxInput).some(
-      input => input.checked
+      (input) => input.checked
     );
   }
 
   function showStep(currentStep) {
     steps.forEach((step, index) => {
-      step.classList.toggle('active', index === currentStep);
-      circles[index].classList[`${index <= currentStep ? 'add' : 'remove'}`](
-        'active'
+      step.classList.toggle("active", index === currentStep);
+      circles[index].classList[`${index <= currentStep ? "add" : "remove"}`](
+        "active"
       );
     });
     progressBar.style.width = `${(currentStep / (circles.length - 1)) * 100}%`;
@@ -156,49 +157,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function createCheckBox(name, value, labelText) {
-    const label = document.createElement('label');
-    label.className = 'custom-checkbox';
+    const label = document.createElement("label");
+    label.className = "custom-checkbox";
 
-    const input = document.createElement('input');
-    input.type = 'checkbox';
+    const input = document.createElement("input");
+    input.type = "checkbox";
     input.name = name;
     input.value = value;
 
-    const checkmark = document.createElement('span');
-    checkmark.className = 'checkmark';
+    const checkmark = document.createElement("span");
+    checkmark.className = "checkmark";
     label.appendChild(input);
     label.appendChild(checkmark);
-    label.appendChild(document.createTextNode(' ' + labelText));
+    label.appendChild(document.createTextNode(" " + labelText));
 
     return label;
   }
 
   function renderStep2() {
-    step2Content.innerHTML = '';
+    step2Content.innerHTML = "";
 
     const type = form.querySelector('input[name="tipo"]:checked')?.value;
     currentType = type;
 
-    if (type === 'singolo') {
+    if (type === "singolo") {
       step2Content.appendChild(
-        createCheckBox('opzione_singolo', '10_100', '10 anni')
+        createCheckBox("opzione_singolo", "10_100", "10 anni")
       );
       step2Content.appendChild(
-        createCheckBox('opzione_singolo', '10_250', '100 anni')
+        createCheckBox("opzione_singolo", "10_250", "100 anni")
       );
-    } else if (type === 'multipli') {
+    } else if (type === "multipli") {
       step2Content.appendChild(
-        createCheckBox('numero_corsi', '10', '10 corsi')
+        createCheckBox("numero_corsi", "10", "10 corsi")
       );
       step2Content.appendChild(
-        createCheckBox('numero_corsi', '50', '50 corsi')
+        createCheckBox("numero_corsi", "50", "50 corsi")
       );
     }
   }
 
   function generateSummary() {
     const data = new FormData(form);
-    const type = data.get('tipo');
+    const type = data.get("tipo");
     let price = 0;
     // let card = document.createElement('div');
     // card.className = 'summary-card';
@@ -208,11 +209,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // title.textContent = 'Riepilogo Configurazione 📋';
     // card.appendChild(title);
 
-    const cardList = document.createElement('ul');
-    cardList.className = 'card-list';
+    const cardList = document.createElement("ul");
+    cardList.className = "card-list";
 
     const addItem = (label, value, icon, itemClass) => {
-      const listItem = document.createElement('li');
+      const listItem = document.createElement("li");
       listItem.className = itemClass;
       listItem.innerHTML = `<i class="ri-${icon}"></i> <strong>${label}:</strong> ${value}`;
       cardList.appendChild(listItem);
@@ -223,26 +224,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // listItemType.innerHTML = `<strong>Tipo:</strong> ${type}`;
     // cardList.appendChild(listItemType);
 
-    addItem('Tipo', `${type}`, 'book-shelf-line', 'list-summary');
+    addItem("Tipo", `${type}`, "book-shelf-line", "list-summary");
 
-    if (type === 'singolo') {
-      const value = data.get('opzione_singolo');
+    if (type === "singolo") {
+      const value = data.get("opzione_singolo");
       if (!value) return;
-      const years = value.split('_')[0];
-      price = value === '10_100' ? 100 : 250;
+      const years = value.split("_")[0];
+      price = value === "10_100" ? 100 : 250;
 
       // const listItemDuration = document.createElement('li');
       // listItemDuration.className = 'list-summary';
       // listItemDuration.innerHTML = `<strong>Durata:</strong> ${years} anni`;
       // cardList.appendChild(listItemDuration);
 
-      addItem('Durata', `${years} anni`, 'hourglass-line', 'list-summary');
+      addItem("Durata", `${years} anni`, "hourglass-line", "list-summary");
     }
 
-    if (type === 'multipli') {
-      const courses = data.get('numero_corsi');
-      const students = data.get('studenti');
-      const duration = data.get('durata');
+    if (type === "multipli") {
+      const courses = data.get("numero_corsi");
+      const students = data.get("studenti");
+      const duration = data.get("durata");
       const key = `${courses}_${students}_${duration}`;
       price = pricesMultipleCourses[key] || 0;
 
@@ -251,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // listItemCourses.innerHTML = `<strong>Corsi:</strong> ${courses}`;
       // cardList.append(listItemCourses);
 
-      addItem('Corsi', `${courses}`, 'book-line', 'list-summary');
+      addItem("Corsi", `${courses}`, "book-line", "list-summary");
 
       // const listItemStudents = document.createElement('li');
       // listItemStudents.className = 'list-summary';
@@ -261,10 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
       // cardList.append(listItemStudents);
 
       addItem(
-        'Studenti',
-        `${students === 'individuale' ? 'Singolo studente' : '30 studenti'}`,
-        'team-line',
-        'list-summary'
+        "Studenti",
+        `${students === "individuale" ? "Singolo studente" : "30 studenti"}`,
+        "team-line",
+        "list-summary"
       );
 
       // const listItemDuration = document.createElement('li');
@@ -272,21 +273,21 @@ document.addEventListener('DOMContentLoaded', () => {
       // listItemDuration.innerHTML = `<strong>Durata:</strong> ${duration}`;
       // cardList.append(listItemDuration);
 
-      addItem('Durata', `${duration}`, 'hourglass-line', 'list-summary');
+      addItem("Durata", `${duration}`, "hourglass-line", "list-summary");
     }
 
-    if (type === 'personalizzato') {
+    if (type === "personalizzato") {
       const personalData = new FormData(personalDataForm);
-      const name = personalData.get('nome');
-      const email = personalData.get('email');
-      const message = personalData.get('messaggio');
+      const name = personalData.get("nome");
+      const email = personalData.get("email");
+      const message = personalData.get("messaggio");
 
       if (name && email && message) {
-        addItem('Nome', name, 'user-line', 'list-summary');
-        addItem('Email', email, 'mail-line', 'list-summary');
-        addItem('Messaggio', message, 'chat-1-line', 'list-summary');
+        addItem("Nome", name, "user-line", "list-summary");
+        addItem("Email", email, "mail-line", "list-summary");
+        addItem("Messaggio", message, "chat-1-line", "list-summary");
       }
-      price = 'Da concordare';
+      price = "Da concordare";
     }
 
     // const listItemPrice = document.createElement('li');
@@ -294,30 +295,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // listItemPrice.innerHTML = `<strong>Prezzo totale:</strong> ${price}`;
     // cardList.append(listItemPrice);
 
-    if (type !== 'personalizzato') {
+    if (type !== "personalizzato") {
       addItem(
-        'Prezzo totale',
+        "Prezzo totale",
         `${price} €`,
-        'money-euro-circle-line',
-        'list-summary'
+        "money-euro-circle-line",
+        "list-summary"
       );
     }
 
-    addItem('Setup iniziale', '+ 1000 €', 'settings-4-line', 'list-summary');
+    addItem("Setup iniziale", "+ 1000 €", "settings-4-line", "list-summary");
 
-    apiOptionalChoice.addEventListener('click', () => {
-      addItem('Accesso API', '+ 5000 €', 'bug-line', 'list-summary');
-      apiLabel.style.display = 'none';
+    apiOptionalChoice.addEventListener("click", () => {
+      addItem("Accesso API", "+ 5000 €", "bug-line", "list-summary");
+      apiLabel.style.display = "none";
     });
 
-    summaryBox.textContent = '';
+    summaryBox.textContent = "";
     summaryBox.appendChild(cardList);
   }
 
-  form.addEventListener('change', e => {
-    if (e.target.type === 'checkbox') {
+  form.addEventListener("change", (e) => {
+    if (e.target.type === "checkbox") {
       uncheckOtherCheckbox(e.target.name, e.target);
-      if (e.target.name === 'tipo') {
+      if (e.target.name === "tipo") {
         renderStep2();
       }
     }
@@ -327,25 +328,27 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateNavigation() {
     if (currentFormStep === steps.length - 1) {
       generateSummary();
-      nextBtn.style.display = 'none';
+      nextBtn.style.display = "none";
     } else {
-      nextBtn.style.display = 'block';
+      nextBtn.style.display = "block";
     }
 
     prevBtn.disabled = currentFormStep === 0;
+    // confirmBtn.style.display =
+    //   currentFormStep === steps.length - 1 ? "inline-block" : "none";
   }
 
-  nextBtn.addEventListener('click', () => {
+  nextBtn.addEventListener("click", () => {
     const type = form.querySelector('input[name="tipo"]:checked')?.value;
 
-    if (currentFormStep === 0 && type === 'singolo') {
+    if (currentFormStep === 0 && type === "singolo") {
       currentFormStep = 1;
       showStep(currentFormStep);
       updateNavigation();
       return;
     }
 
-    if (currentFormStep === 1 && type === 'singolo') {
+    if (currentFormStep === 1 && type === "singolo") {
       currentFormStep = steps.length - 1;
       generateSummary();
       showStep(currentFormStep);
@@ -353,11 +356,15 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    if (currentFormStep === 0 && type === 'personalizzato') {
+    if (currentFormStep === 0 && type === "personalizzato") {
       modal.showModal();
-      nextBtn.style.display = 'none';
-      prevBtn.style.display = 'none';
+      nextBtn.style.display = "none";
+      prevBtn.style.display = "none";
       return;
+    }
+
+    if (currentFormStep === steps.length - 1) {
+      btnSummary.style.display = 'inline-block';
     }
 
     // if (currentFormStep === 5 && type === 'personalizzato') {
@@ -380,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateNavigation();
   });
 
-  personalDataForm.addEventListener('submit', e => {
+  personalDataForm.addEventListener("submit", (e) => {
     e.preventDefault();
   });
 
@@ -400,80 +407,80 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleConfirmButton();
 
   // Aggiungi il listener agli input
-  [nameInput, emailInput, messageInput].forEach(input => {
-    input.addEventListener('input', toggleConfirmButton);
+  [nameInput, emailInput, messageInput].forEach((input) => {
+    input.addEventListener("input", toggleConfirmButton);
   });
 
-  confirmBtn.addEventListener('click', () => {
+  confirmBtn.addEventListener("click", () => {
     modal.close();
     currentFormStep = steps.length - 1;
     generateSummary();
     showStep(currentFormStep);
     updateNavigation();
-    prevBtn.style.display = 'block';
+    prevBtn.style.display = "block";
   });
 
-  backBtn.addEventListener('click', () => {
+  backBtn.addEventListener("click", () => {
     modal.close();
     currentFormStep = 0;
     generateSummary();
     showStep(currentFormStep);
     updateNavigation();
-     const formCheckboxInput = steps[currentFormStep].querySelectorAll(
+    const formCheckboxInput = steps[currentFormStep].querySelectorAll(
       'input[type="checkbox"]'
     );
-    formCheckboxInput.forEach(checkbox => {
+    formCheckboxInput.forEach((checkbox) => {
       checkbox.checked = false;
     });
-    nextBtn.style.display = 'block';
+    nextBtn.style.display = "block";
     nextBtn.disabled = true;
-    prevBtn.style.display = 'block';
+    prevBtn.style.display = "block";
     prevBtn.disabled = true;
   });
 
-  prevBtn.addEventListener('click', () => {
-    if (currentType === 'singolo' && currentFormStep === steps.length - 1) {
+  prevBtn.addEventListener("click", () => {
+    if (currentType === "singolo" && currentFormStep === steps.length - 1) {
       currentFormStep = 1;
     } else {
       currentFormStep--;
     }
     showStep(currentFormStep);
-    successMessage.style.display = 'none';
+    successMessage.style.display = "none";
     updateNavigation();
-    btnSummary.style.display = 'inline-block';
-    apiLabel.style.display = 'flex';
+    btnSummary.style.display = "inline-block";
+    apiLabel.style.display = "flex";
     apiCheckbox.checked = false;
     const formCheckboxInput = steps[currentFormStep].querySelectorAll(
       'input[type="checkbox"]'
     );
-    formCheckboxInput.forEach(checkbox => {
+    formCheckboxInput.forEach((checkbox) => {
       checkbox.checked = false;
     });
     nextBtn.disabled = true;
   });
 
-  goBackBtn.addEventListener('click', () => {
+  goBackBtn.addEventListener("click", () => {
     currentFormStep = 0;
     showStep(currentFormStep);
-    successMessage.style.display = 'none';
+    successMessage.style.display = "none";
     updateNavigation();
-    form.style.display = 'block';
+    form.style.display = "block";
     const formCheckboxInput = steps[currentFormStep].querySelectorAll(
       'input[type="checkbox"]'
     );
-    formCheckboxInput.forEach(checkbox => {
+    formCheckboxInput.forEach((checkbox) => {
       checkbox.checked = false;
     });
     nextBtn.disabled = true;
     prevBtn.disabled = true;
   });
 
-  form.addEventListener('submit', e => {
-    const btnSummary = document.getElementById('btnSummary');
+  form.addEventListener("submit", (e) => {
+    const btnSummary = document.getElementById("btnSummary");
     e.preventDefault();
-    successMessage.style.display = 'block';
-    form.style.display = 'none';
-    btnSummary.style.display = 'none';
+    successMessage.style.display = "block";
+    form.style.display = "none";
+    btnSummary.style.display = "none";
   });
 
   validateStep();
