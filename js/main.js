@@ -466,12 +466,12 @@ document.addEventListener("DOMContentLoaded", () => {
     generateSummary();
     showStep(currentFormStep);
     updateNavigation();
-    const formCheckboxInput = steps[currentFormStep].querySelectorAll(
-      'input[type="checkbox"]'
-    );
-    formCheckboxInput.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
+    // const formCheckboxInput = steps[currentFormStep].querySelectorAll(
+    //   'input[type="checkbox"]'
+    // );
+    // formCheckboxInput.forEach((checkbox) => {
+    //   checkbox.checked = false;
+    // });
     nextBtn.style.display = "block";
     nextBtn.disabled = true;
     prevBtn.style.display = "block";
@@ -514,12 +514,12 @@ document.addEventListener("DOMContentLoaded", () => {
     apiCheckbox.checked = false;
     nextBtn.disabled = true;
 
-    const formCheckboxInput = steps[currentFormStep].querySelectorAll(
-      'input[type="checkbox"]'
-    );
-    formCheckboxInput.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
+    // const formCheckboxInput = steps[currentFormStep].querySelectorAll(
+    //   'input[type="checkbox"]'
+    // );
+    // formCheckboxInput.forEach((checkbox) => {
+    //   checkbox.checked = false;
+    // });
   });
 
   goBackBtn.addEventListener("click", () => {
@@ -528,12 +528,12 @@ document.addEventListener("DOMContentLoaded", () => {
     successMessage.style.display = "none";
     updateNavigation();
     form.style.display = "block";
-    const formCheckboxInput = steps[currentFormStep].querySelectorAll(
-      'input[type="checkbox"]'
-    );
-    formCheckboxInput.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
+    // const formCheckboxInput = steps[currentFormStep].querySelectorAll(
+    //   'input[type="checkbox"]'
+    // );
+    // formCheckboxInput.forEach((checkbox) => {
+    //   checkbox.checked = false;
+    // });
     nextBtn.disabled = true;
     prevBtn.disabled = true;
   });
