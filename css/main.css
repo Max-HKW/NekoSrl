@@ -710,6 +710,12 @@ fieldset.step.active {
   font-weight: var(--font-semi-bold);
   text-align: center;
   align-items: center;
+} 
+
+@media (min-width:768px) {
+  .custom-checkbox {
+    width: initial;
+  }
 }
 
 .optionalChoices {

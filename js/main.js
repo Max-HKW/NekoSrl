@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function createApiCheckBox(name, value, labelText) {
     const label = document.createElement("label");
     label.classList.add("optionalChoices");
-    label.setAttribute("data-tooltip", "+ 5000 €"); // <-- Spostato qui
+    label.setAttribute("data-tooltip", "+ 5000 €"); 
 
     const input = document.createElement("input");
     input.type = "checkbox";
@@ -201,6 +201,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return label;
   }
+
+  //   function createMailContact(name, value, labelText) {
+  //   const label = document.createElement("label");
+  //   label.classList.add("mailContact");
+    
+
+  //   const input = document.createElement("input");
+  //   input.type = "checkbox";
+  //   input.name = name;
+  //   input.value = value;
+  //   label.appendChild(input);
+  
+  //   label.appendChild(document.createTextNode(" " + labelText));
+
+  //   return label;
+  // }
 
   function renderStep2() {
     step2Content.innerHTML = "";
@@ -324,12 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // cardList.append(listItemPrice);
 
     if (type !== "personalizzato") {
-      addItem(
-        "Prezzo pacchetto",
-        `${price} €`,
-        "money-euro-circle-line",
-        "list-summary"
-      );
+      
     }
 
     addItem("Setup iniziale", "+ 1000 €", "settings-4-line", "list-summary");
