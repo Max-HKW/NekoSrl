@@ -780,6 +780,15 @@ fieldset.step.active {
   top: 50%;
 }
 
+.list-summary {
+  list-style: none;
+}
+
+.list-summary input {
+  border: 2px solid var(--secondary);
+  padding: 0.5rem 1rem;
+}
+
 /* .custom-checkbox:not(:last-child) {
   margin-bottom: 1rem;
 } */
