@@ -927,6 +927,8 @@ dialog {
   border-radius: 1rem;
   padding: 1rem 2rem;
   animation: fade-in-up 0.8s ease-out forwards;
+  min-width: 450px;
+  width: 600px;
 }
 
 dialog[open] {

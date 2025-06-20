@@ -202,20 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return label;
   }
 
-  //   function createMailContact(name, value, labelText) {
-  //   const label = document.createElement("label");
-  //   label.classList.add("mailContact");
-
-  //   const input = document.createElement("input");
-  //   input.type = "checkbox";
-  //   input.name = name;
-  //   input.value = value;
-  //   label.appendChild(input);
-
-  //   label.appendChild(document.createTextNode(" " + labelText));
-
-  //   return label;
-  // }
 
   function renderStep2() {
     step2Content.innerHTML = "";
@@ -426,7 +412,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = emailInput.value.trim();
     const message = messageInput.value.trim();
 
-    confirmBtn.disabled = !(name && email && message);
+    const emailIsValid = emailInput.checkValidity();
+
+    confirmBtn.disabled = !(name && email && message && emailIsValid);
   }
 
   // Inizializza lo stato del bottone
