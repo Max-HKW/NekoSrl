@@ -511,10 +511,19 @@ function conditionalPadding() {
   const formDisplay = window.getComputedStyle(form).display;
 
   if (formDisplay === 'none') {
-    reviewsSection.classList.add('padding-top')
+    reviewsSection.classList.add('padding-top');
   } else {
     reviewsSection.classList.remove('padding-top');
   }
 }
 
+// SCROLL UP
 
+const scrollUp = () => {
+  const scrollUp = document.getElementById('scrollUp');
+  window.scrollY >= 350
+    ? scrollUp.classList.add('show-scroll')
+    : scrollUp.classList.remove('show-scroll');
+};
+
+window.addEventListener('scroll', scrollUp);

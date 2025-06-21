@@ -1246,13 +1246,12 @@ dialog::backdrop {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-
-
 .footer__logo-img {
   width: 150px;
 }
 
 .footer__middle h3 {
+  font-size: var(--h2-font-size);
   margin-bottom: 1rem;
 }
 
@@ -1260,6 +1259,7 @@ dialog::backdrop {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  font-size: var(--h3-font-size);
 }
 
 .footer__link {
@@ -1344,6 +1344,32 @@ dialog::backdrop {
 
 .footer__right {
   width: 100%;
+}
+
+/* SCROLL UP */
+
+.scrollup {
+  position: fixed;
+  right: -100%;
+  bottom: 3rem;
+  background-color: rgba(110, 164, 143, .8);
+  padding: 6px;
+  display: inline-flex;
+  color: var(--white-color);
+  font-size: 1.25rem;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: var(--z-fixed);
+  transition: right .3s, transform .3s;
+  box-shadow: var(--shadow);
+}
+
+.scrollup:hover {
+  transform: translateY(-.25rem);
+}
+
+.show-scroll {
+  right: 1rem;
 }
 
 /* BREAKPOINTS */
