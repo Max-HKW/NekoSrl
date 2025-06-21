@@ -11,15 +11,15 @@ if (navToggle) {
   });
 }
 
-const navLinks = document.querySelectorAll('.nav__link');
+// const navLinks = document.querySelectorAll('.nav__link');
 
-const linkAction = () => {
-  navMenu.classList.remove('show-menu');
-};
+// const linkAction = () => {
+//   navMenu.classList.remove('show-menu');
+// };
 
-navLinks.forEach(link => {
-  link.addEventListener('click', linkAction);
-});
+// navLinks.forEach(link => {
+//   link.addEventListener('click', linkAction);
+// });
 
 // CARD ANIMATION
 
