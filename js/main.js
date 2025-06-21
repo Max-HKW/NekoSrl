@@ -49,14 +49,14 @@ cards.forEach(card => observer.observe(card));
 
 // CHANGE HEADER BACKGROUND
 
-const bgHeader = () => {
-  const header = document.getElementById('header');
-  window.scrollY >= 50
-    ? header.classList.add('bg-header')
-    : header.classList.remove('bg-header');
-};
+// const bgHeader = () => {
+//   const header = document.getElementById("header");
+//   window.scrollY >= 50
+//     ? header.classList.add("bg-header")
+//     : header.classList.remove("bg-header");
+// };
 
-window.addEventListener('scroll', bgHeader);
+// window.addEventListener("scroll", bgHeader);
 
 // FORM STEP
 
@@ -107,7 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
     apiOptionalChoice = document.querySelector('.optionalChoices'),
     apiLabel = document.querySelector('.apiLabel'),
     apiCheckbox = document.querySelector('.apiCheckbox'),
-    goBackBtn = document.querySelector('.go-back-btn');
+    goBackBtn = document.querySelector('.go-back-btn'),
+    btnSummary = document.getElementById('btnSummary');
 
   let currentFormStep = 0;
   let currentType = '';
@@ -157,12 +158,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createCheckBox(name, value, labelText) {
     const label = document.createElement('label');
-    label.className = 'custom-checkbox';
+    label.classList.add('custom-checkbox');
 
     const input = document.createElement('input');
     input.type = 'checkbox';
     input.name = name;
     input.value = value;
+    // input.setAttribute('data-tooltip', '5000');
+
+    const checkmark = document.createElement('span');
+    checkmark.className = 'checkmark';
+    label.appendChild(input);
+    label.appendChild(checkmark);
+    label.appendChild(document.createTextNode(' ' + labelText));
+
+    return label;
+  }
+
+  function createApiCheckBox(name, value, labelText) {
+    const label = document.createElement('label');
+    label.classList.add('optionalChoices');
+    label.setAttribute('data-tooltip', '+ 5000 €');
+
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.name = name;
+    input.value = value;
+
+    input.addEventListener('change', () => {
+      if (input.checked) {
+        label.classList.add('active');
+      } else {
+        label.classList.remove('active');
+      }
+    });
 
     const checkmark = document.createElement('span');
     checkmark.className = 'checkmark';
@@ -200,13 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = new FormData(form);
     const type = data.get('tipo');
     let price = 0;
-    // let card = document.createElement('div');
-    // card.className = 'summary-card';
-
-    // let title = document.createElement('h3');
-    // title.className = 'summary-title';
-    // title.textContent = 'Riepilogo Configurazione 📋';
-    // card.appendChild(title);
 
     const cardList = document.createElement('ul');
     cardList.className = 'card-list';
@@ -218,11 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
       cardList.appendChild(listItem);
     };
 
-    // const listItemType = document.createElement('li');
-    // listItemType.className = 'list-summary';
-    // listItemType.innerHTML = `<strong>Tipo:</strong> ${type}`;
-    // cardList.appendChild(listItemType);
-
     addItem('Tipo', `${type}`, 'book-shelf-line', 'list-summary');
 
     if (type === 'singolo') {
@@ -230,11 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!value) return;
       const years = value.split('_')[0];
       price = value === '10_100' ? 100 : 250;
-
-      // const listItemDuration = document.createElement('li');
-      // listItemDuration.className = 'list-summary';
-      // listItemDuration.innerHTML = `<strong>Durata:</strong> ${years} anni`;
-      // cardList.appendChild(listItemDuration);
 
       addItem('Durata', `${years} anni`, 'hourglass-line', 'list-summary');
     }
@@ -246,19 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const key = `${courses}_${students}_${duration}`;
       price = pricesMultipleCourses[key] || 0;
 
-      // const listItemCourses = document.createElement('li');
-      // listItemCourses.className = 'list-summary';
-      // listItemCourses.innerHTML = `<strong>Corsi:</strong> ${courses}`;
-      // cardList.append(listItemCourses);
-
       addItem('Corsi', `${courses}`, 'book-line', 'list-summary');
-
-      // const listItemStudents = document.createElement('li');
-      // listItemStudents.className = 'list-summary';
-      // listItemStudents.innerHTML = `<strong>Studenti:</strong> ${
-      //   students === 'individuale' ? 'Singolo studente' : '30 studenti'
-      // }`;
-      // cardList.append(listItemStudents);
 
       addItem(
         'Studenti',
@@ -266,11 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'team-line',
         'list-summary'
       );
-
-      // const listItemDuration = document.createElement('li');
-      // listItemDuration.className = 'list-summary';
-      // listItemDuration.innerHTML = `<strong>Durata:</strong> ${duration}`;
-      // cardList.append(listItemDuration);
 
       addItem('Durata', `${duration}`, 'hourglass-line', 'list-summary');
     }
@@ -286,18 +281,14 @@ document.addEventListener('DOMContentLoaded', () => {
         addItem('Email', email, 'mail-line', 'list-summary');
         addItem('Messaggio', message, 'chat-1-line', 'list-summary');
       }
-      price = 'Da concordare';
     }
 
-    // const listItemPrice = document.createElement('li');
-    // listItemPrice.className = 'list-summary';
-    // listItemPrice.innerHTML = `<strong>Prezzo totale:</strong> ${price}`;
-    // cardList.append(listItemPrice);
+    summaryBox.textContent = '';
 
-    if (type !== 'personalizzato') {
+    if (type === 'singolo' || type === 'multipli') {
       addItem(
-        'Prezzo totale',
-        `${price} €`,
+        'Prezzo pacchetto',
+        `${price.toLocaleString()} €`,
         'money-euro-circle-line',
         'list-summary'
       );
@@ -305,13 +296,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addItem('Setup iniziale', '+ 1000 €', 'settings-4-line', 'list-summary');
 
-    apiOptionalChoice.addEventListener('click', () => {
-      addItem('Accesso API', '+ 5000 €', 'bug-line', 'list-summary');
-      apiLabel.style.display = 'none';
-    });
-
-    summaryBox.textContent = '';
     summaryBox.appendChild(cardList);
+
+    if (type === 'singolo' || type === 'multipli') {
+      const nameInput = document.createElement('input');
+      nameInput.type = 'text';
+      nameInput.name = 'contatto_nome';
+      nameInput.placeholder = 'Inserisci il tuo nome';
+      nameInput.required = true;
+
+      const emailInput = document.createElement('input');
+      emailInput.type = 'email';
+      emailInput.name = 'contatto_email';
+      emailInput.placeholder = 'Inserisci la tua email';
+      emailInput.required = true;
+
+      const nameWrapper = document.createElement('li');
+      nameWrapper.className = 'list-summary';
+      nameWrapper.appendChild(nameInput);
+
+      const emailWrapper = document.createElement('li');
+      emailWrapper.className = 'list-summary';
+      emailWrapper.appendChild(emailInput);
+
+      summaryBox.appendChild(nameWrapper);
+      summaryBox.appendChild(emailWrapper);
+    }
+
+    summaryBox.appendChild(
+      createApiCheckBox('accesso_api', '5000', 'Accesso API')
+    );
+    summaryBox.appendChild(btnSummary);
+    btnSummary.style.display = 'inline-block';
   }
 
   form.addEventListener('change', e => {
@@ -328,11 +344,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentFormStep === steps.length - 1) {
       generateSummary();
       nextBtn.style.display = 'none';
+      btnSummary.style.display = 'inline-block';
     } else {
       nextBtn.style.display = 'block';
+      btnSummary.style.display = 'none';
     }
 
     prevBtn.disabled = currentFormStep === 0;
+
+    const formCheckboxInput = steps[currentFormStep].querySelectorAll(
+      'input[type="checkbox"]'
+    );
+    formCheckboxInput.forEach(checkbox => {
+      checkbox.checked = false;
+    });
+
+    // confirmBtn.style.display =
+    //   currentFormStep === steps.length - 1 ? "inline-block" : "none";
   }
 
   nextBtn.addEventListener('click', () => {
@@ -360,23 +388,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // if (currentFormStep === 5 && type === 'personalizzato') {
-    //   currentFormStep = steps.length - 1;
-    //   generateSummary();
-    //   showStep(currentFormStep);
-    //   updateNavigation();
-    //   return;
-    // }
+    if (currentFormStep === steps.length - 1) {
+      btnSummary.style.display = 'block';
+    }
 
     currentFormStep++;
     showStep(currentFormStep);
 
-    // if (currentFormStep === steps.length - 1) {
-    //   generateSummary();
-    //   nextBtn.style.display = 'none';
-    // } else {
-    //   nextBtn.style.display = 'block';
-    // }
     updateNavigation();
   });
 
@@ -393,7 +411,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = emailInput.value.trim();
     const message = messageInput.value.trim();
 
-    confirmBtn.disabled = !(name && email && message);
+    const emailIsValid = emailInput.checkValidity();
+
+    confirmBtn.disabled = !(name && email && message && emailIsValid);
   }
 
   // Inizializza lo stato del bottone
@@ -419,12 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
     generateSummary();
     showStep(currentFormStep);
     updateNavigation();
-     const formCheckboxInput = steps[currentFormStep].querySelectorAll(
-      'input[type="checkbox"]'
-    );
-    formCheckboxInput.forEach(checkbox => {
-      checkbox.checked = false;
-    });
+
     nextBtn.style.display = 'block';
     nextBtn.disabled = true;
     prevBtn.style.display = 'block';
@@ -432,23 +447,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   prevBtn.addEventListener('click', () => {
-    if (currentType === 'singolo' && currentFormStep === steps.length - 1) {
-      currentFormStep = 1;
+    if (currentFormStep === steps.length - 1) {
+      currentFormStep = 0;
     } else {
       currentFormStep--;
     }
+
     showStep(currentFormStep);
-    successMessage.style.display = 'none';
     updateNavigation();
+
+    successMessage.style.display = 'none';
     btnSummary.style.display = 'inline-block';
     apiLabel.style.display = 'flex';
     apiCheckbox.checked = false;
-    const formCheckboxInput = steps[currentFormStep].querySelectorAll(
-      'input[type="checkbox"]'
-    );
-    formCheckboxInput.forEach(checkbox => {
-      checkbox.checked = false;
-    });
     nextBtn.disabled = true;
   });
 
@@ -458,12 +469,8 @@ document.addEventListener('DOMContentLoaded', () => {
     successMessage.style.display = 'none';
     updateNavigation();
     form.style.display = 'block';
-    const formCheckboxInput = steps[currentFormStep].querySelectorAll(
-      'input[type="checkbox"]'
-    );
-    formCheckboxInput.forEach(checkbox => {
-      checkbox.checked = false;
-    });
+    conditionalPadding();
+
     nextBtn.disabled = true;
     prevBtn.disabled = true;
   });
@@ -474,7 +481,40 @@ document.addEventListener('DOMContentLoaded', () => {
     successMessage.style.display = 'block';
     form.style.display = 'none';
     btnSummary.style.display = 'none';
+    conditionalPadding();
   });
 
   validateStep();
 });
+
+// SWIPER
+
+const swiper = new Swiper('.swiper', {
+  loop: true,
+  slidesPerView: 'auto',
+  centeredSlides: true,
+  spaceBetween: 14,
+  grabCursor: true,
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+
+// HELPER
+
+function conditionalPadding() {
+  const form = document.getElementById('feature__form');
+  const reviewsSection = document.getElementById('reviews');
+
+  const formDisplay = window.getComputedStyle(form).display;
+
+  if (formDisplay === 'none') {
+    reviewsSection.classList.add('padding-top')
+  } else {
+    reviewsSection.classList.remove('padding-top');
+  }
+}
+
+

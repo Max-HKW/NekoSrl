@@ -66,6 +66,18 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
       rel="stylesheet"
     />
 
+    <!-- SWIPER -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css" />
 
@@ -82,19 +94,25 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
             <li>
-              <a href="#home" class="nav__link">Home</a>
+              <a href="#" class="nav__link">Home</a>
             </li>
 
             <li>
-              <a href="#kedos" class="nav__link">Scopri Kedos</a>
+              <a
+                href="https://www.kedos-srl.it/kecert"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="nav__link"
+                >Scopri Kedos</a
+              >
             </li>
 
             <li>
-              <a href="#configura" class="nav__link">Configura Ora</a>
+              <a href="#feature" class="nav__link">Configura Ora</a>
             </li>
 
             <li>
-              <a href="#contattaci" class="nav__link">Contattaci</a>
+              <a href="#reviews" class="nav__link">Testimonianze</a>
             </li>
           </ul>
         </div>
@@ -300,11 +318,8 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             <legend>Riepilogo configurazione 📋</legend>
             <div class="fieldset__wrapper fieldset__wrapper-summary">
               <div class="summary"></div>
-              <div class="summary-wrapper">
-                <!-- <label class="custom-checkbox">
-                  <input type="checkbox" id="api" name="setup" value="1000" />
-                  <span class="checkmark"></span> <span class="optionalChoices" data-tooltip="+ 1000 €">Setup iniziale</span>
-                </label> -->
+
+              <!-- <div class="summary-wrapper">
                 <label class="custom-checkbox apiLabel">
                   <input
                     type="checkbox"
@@ -320,7 +335,8 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                     >Accesso API</span
                   >
                 </label>
-              </div>
+              </div> -->
+
               <button type="submit" class="btn__summary btn" id="btnSummary">
                 Conferma
               </button>
@@ -368,6 +384,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                     type="email"
                     name="email"
                     placeholder="Inserisci la tua email o quella della tua azienda"
+                    required
                   />
                 </label>
 
@@ -378,7 +395,12 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
                 <div class="modal-buttons">
                   <button id="backBtn" class="btn">Indietro</button>
-                  <button type="submit" id="confirmBtn" class="btn" data-tooltip="Compila i campi !">
+                  <button
+                    type="submit"
+                    id="confirmBtn"
+                    class="btn"
+                    data-tooltip="Compila i campi o verifica l'email !"
+                  >
                     Conferma
                   </button>
                 </div>
@@ -386,6 +408,104 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             </fieldset>
           </form>
         </dialog>
+      </section>
+
+      <section class="reviews section container" id="reviews">
+        <div class="reviews__header">
+          <h2 class="reviews__title title">Cosa dicono i nostri utenti</h2>
+          <p class="reviews__subtitle subtitle">
+            Recensioni reali da chi ha già usato KeCert
+          </p>
+        </div>
+
+        <div class="swiper">
+          <div class="reviews__wrapper swiper-wrapper">
+            <div class="reviews__card swiper-slide reviews-card-1">
+              <div class="reviews__images">
+                <img
+                  src="images/testimonial-perfil-1.png"
+                  alt="Reviews Image"
+                  class="first-reviews-img"
+                />
+                <i class="ri-double-quotes-l"></i>
+              </div>
+              <div class="reviews__content">
+                <p class="reviews__text">
+                  "Il configuratore è stato semplicissimo da usare. In pochi
+                  minuti avevamo un preventivo chiaro."
+                </p>
+                <p class="reviews__author">– Laura F. , Ente Formativo Roma</p>
+              </div>
+            </div>
+
+            <div class="reviews__card swiper-slide reviews-card-2">
+              <div class="reviews__images">
+                <img
+                  src="images/testimonial-perfil-2.png"
+                  alt="Reviews Image"
+                  class="first-reviews-img"
+                />
+                <i class="ri-double-quotes-l"></i>
+              </div>
+              <div class="reviews__content">
+                <p class="reviews__text">
+                  "Ottimo strumento per digitalizzare i nostri certificati.
+                  Supporto rapido e professionale."
+                </p>
+                <p class="reviews__author">– Marco R. , ITS Milano</p>
+              </div>
+            </div>
+
+            <div class="reviews__card swiper-slide reviews-card-3">
+              <div class="reviews__images">
+                <img
+                  src="images/testimonial-perfil-3.png"
+                  alt="Reviews Image"
+                  class="first-reviews-img"
+                />
+                <i class="ri-double-quotes-l"></i>
+              </div>
+              <div class="reviews__content">
+                <p class="reviews__text">
+                  "Intuitivo e immediato: ha semplificato la gestione dei
+                  certificati per tutto il nostro ente formativo."
+                </p>
+                <p class="reviews__author">
+                  – Martina S. , Coordinatrice Didattica
+                </p>
+              </div>
+            </div>
+
+            <div class="reviews__card swiper-slide reviews-card-4">
+              <div class="reviews__images">
+                <img
+                  src="images/profile-img.png"
+                  alt="Reviews Image"
+                  class="first-reviews-img"
+                />
+                <i class="ri-double-quotes-l"></i>
+              </div>
+              <div class="reviews__content">
+                <p class="reviews__text">
+                  "L'integrazione con i nostri sistemi è stata rapida e il
+                  supporto tecnico molto professionale."
+                </p>
+                <p class="reviews__author">
+                  – Elena M. , Responsabile Innovazione
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-navigation">
+            <div class="swiper-button-prev">
+              <i class="ri-arrow-left-s-line"></i>
+            </div>
+            <div class="swiper-button-next">
+              <i class="ri-arrow-right-s-line"></i>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   </body>
