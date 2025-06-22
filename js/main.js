@@ -223,6 +223,16 @@ document.addEventListener('DOMContentLoaded', () => {
         createCheckBox('numero_corsi', '50', '50 corsi')
       );
     }
+
+    // Dopo aver aggiunto tutti i checkbox dinamici:
+    step2Content.querySelectorAll('input[type="checkbox"]').forEach(input => {
+      input.addEventListener('change', () => {
+        uncheckOtherCheckbox(input.name, input); // Mantiene selezione singola
+        validateStep(); // Aggiorna stato bottone Avanti
+      });
+    });
+
+    validateStep(); // Forza la validazione iniziale
   }
 
   function generateSummary() {

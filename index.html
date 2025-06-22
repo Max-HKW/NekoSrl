@@ -53,6 +53,18 @@
     <meta name="twitter:site" content="@YourTwitterHandle" />
     <meta name="twitter:creator" content="@YourTwitterHandle" />
 
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <!-- Preconnect per Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Lato Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Favicon and theme color -->
     <link
       rel="icon"
@@ -90,7 +102,13 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
     <header class="header" id="header">
       <nav class="nav container">
         <a href="#" class="nav__logo">
-          <img src="images/logo_kedos.png" alt="Logo di Kecert" class="nav__logo-img" />
+          <img
+            src="images/logo_kedos.png"
+            alt="Logo di Kecert"
+            class="nav__logo-img"
+            width="100"
+            height="100"
+          />
         </a>
 
         <div class="nav__menu" id="nav-menu">
@@ -119,7 +137,13 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
           </ul>
         </div>
 
-        <div class="nav__toggle" id="nav-toggle" aria-label="Apri il menu di navigazione" role="button"  tabindex="0">
+        <div
+          class="nav__toggle"
+          id="nav-toggle"
+          aria-label="Apri il menu di navigazione"
+          role="button"
+          tabindex="0"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -134,14 +158,23 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
       <section class="hero section" id="hero">
         <figure class="hero__figure">
           <picture>
-            <source srcset="./images/3d-rendering-blockchain-technology.avif" type="image/avif">
-            <source srcset="./images/3d-rendering-blockchain-technology.webp" type="image/webp">
-            <img src="/images/3d-rendering-blockchain-technology.jpg" alt="Rendering 3D di tecnologie blockchain"
-            class="hero__img"
-            width="1920"
-            height="1080"
-            loading="eager"
-            decoding="async">
+            <source
+              srcset="./images/3d-rendering-blockchain-technology.avif"
+              type="image/avif"
+            />
+            <source
+              srcset="./images/3d-rendering-blockchain-technology.webp"
+              type="image/webp"
+            />
+            <img
+              src="/images/3d-rendering-blockchain-technology.jpg"
+              alt="Rendering 3D di tecnologie blockchain"
+              class="hero__img"
+              width="1920"
+              height="1080"
+              loading="eager"
+              decoding="async"
+            />
           </picture>
         </figure>
 
@@ -160,7 +193,6 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             ><span>Configura Ora</span></a
           >
         </div>
-
       </section>
 
       <section class="about section container" id="about">
@@ -279,18 +311,33 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             <legend>Di quanti corsi hai bisogno?</legend>
 
             <div class="fieldset__wrapper">
-              <label for="tipo-singolo"  class="custom-checkbox">
-                <input id="tipo-singolo" type="checkbox" name="tipo" value="singolo" />
+              <label for="tipo-singolo" class="custom-checkbox">
+                <input
+                  id="tipo-singolo"
+                  type="checkbox"
+                  name="tipo"
+                  value="singolo"
+                />
                 <span class="checkmark"></span> Corso singolo
               </label>
 
               <label for="tipo-multipli" class="custom-checkbox">
-                <input id="tipo-multipli" type="checkbox" name="tipo" value="multipli" />
+                <input
+                  id="tipo-multipli"
+                  type="checkbox"
+                  name="tipo"
+                  value="multipli"
+                />
                 <span class="checkmark"></span> Corsi multipli
               </label>
 
               <label for="tipo-personalizzato" class="custom-checkbox">
-                <input id="tipo-personalizzato" type="checkbox" name="tipo" value="personalizzato" />
+                <input
+                  id="tipo-personalizzato"
+                  type="checkbox"
+                  name="tipo"
+                  value="personalizzato"
+                />
                 <span class="checkmark"></span> Personalizzato
               </label>
             </div>
@@ -334,7 +381,10 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
           <fieldset class="step" data-step="5">
             <legend>Riepilogo configurazione 📋</legend>
-            <div aria-live="polite" class="fieldset__wrapper fieldset__wrapper-summary">
+            <div
+              aria-live="polite"
+              class="fieldset__wrapper fieldset__wrapper-summary"
+            >
               <div class="summary"></div>
 
               <!-- <div class="summary-wrapper">
@@ -444,6 +494,8 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                   src="images/testimonial-perfil-1.png"
                   alt="Reviews Image"
                   class="first-reviews-img"
+                  width="120"
+                  height="120"
                 />
                 <i class="ri-double-quotes-l" aria-hidden="true"></i>
               </div>
@@ -462,6 +514,8 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                   src="images/testimonial-perfil-2.png"
                   alt="Reviews Image"
                   class="first-reviews-img"
+                  width="120"
+                  height="120"
                 />
                 <i class="ri-double-quotes-l" aria-hidden="true"></i>
               </div>
@@ -480,6 +534,8 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                   src="images/testimonial-perfil-3.png"
                   alt="Reviews Image"
                   class="first-reviews-img"
+                  width="120"
+                  height="120"
                 />
                 <i class="ri-double-quotes-l" aria-hidden="true"></i>
               </div>
@@ -500,6 +556,8 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                   src="images/profile-img.png"
                   alt="Reviews Image"
                   class="first-reviews-img"
+                  width="120"
+                  height="120"
                 />
                 <i class="ri-double-quotes-l" aria-hidden="true"></i>
               </div>
@@ -535,6 +593,8 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
               src="images/kedos_verticale-1.png"
               alt="Logo Footer"
               class="footer__logo-img"
+              width="150"
+              height="150"
             />
           </a>
         </div>
@@ -574,7 +634,11 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                 href="https://www.linkedin.com/company/kedos-srl"
                 target="_blank"
               >
-                <i class="ri-linkedin-fill" aria-label="Linkedin" aria-hidden="true"></i>
+                <i
+                  class="ri-linkedin-fill"
+                  aria-label="Linkedin"
+                  aria-hidden="true"
+                ></i>
               </a>
             </li>
 
@@ -583,7 +647,11 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                 href="https://www.instagram.com/kedos.srl?igsh=dnlqdjQ5b2Jhc3Ru"
                 target="_blank"
               >
-                <i class="ri-instagram-line" aria-label="Instagram" aria-hidden="true"></i>
+                <i
+                  class="ri-instagram-line"
+                  aria-label="Instagram"
+                  aria-hidden="true"
+                ></i>
               </a>
             </li>
 
@@ -592,13 +660,21 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                 href="https://www.facebook.com/people/Kedos-Srl/100078119546036/"
                 target="_blank"
               >
-                <i class="ri-facebook-fill" aria-label="Facebook" aria-hidden="true"></i>
+                <i
+                  class="ri-facebook-fill"
+                  aria-label="Facebook"
+                  aria-hidden="true"
+                ></i>
               </a>
             </li>
 
             <li>
               <a href="https://www.youtube.com/@kedossrl8775" target="_blank">
-                <i class="ri-youtube-fill" aria-label="Youtube" aria-hidden="true"></i>
+                <i
+                  class="ri-youtube-fill"
+                  aria-label="Youtube"
+                  aria-hidden="true"
+                ></i>
               </a>
             </li>
           </ul>
