@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <!-- Character encoding -->
     <meta charset="UTF-8" />
@@ -16,7 +16,10 @@
     </title>
 
     <!-- Meta description for SEO (max 155 characters) -->
-    <meta name="description" content="" />
+    <meta
+      name="description"
+      content="Configura in pochi passi i tuoi certificati blockchain con KeCert, la soluzione scalabile e sicura per enti formativi."
+    />
 
     <!-- Author of the document -->
     <meta name="author" content="NekoSrl" />
@@ -56,7 +59,7 @@
       href="./images/cropped-kedos_icon-192x192.png"
       type="image/x-icon"
     />
-   
+
     <!--Icons-->
     <link
       href="
@@ -87,7 +90,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
     <header class="header" id="header">
       <nav class="nav container">
         <a href="#" class="nav__logo">
-          <img src="images/logo_kedos.png" alt="Logo" class="nav__logo-img" />
+          <img src="images/logo_kedos.png" alt="Logo di Kecert" class="nav__logo-img" />
         </a>
 
         <div class="nav__menu" id="nav-menu">
@@ -116,7 +119,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
           </ul>
         </div>
 
-        <div class="nav__toggle" id="nav-toggle">
+        <div class="nav__toggle" id="nav-toggle" aria-label="Apri il menu di navigazione" role="button"  tabindex="0">
           <span></span>
           <span></span>
           <span></span>
@@ -129,6 +132,21 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
     <main class="main">
       <section class="hero section" id="hero">
+        <figure class="hero__figure">
+          <picture>
+            <source srcset="./images/3d-rendering-blockchain-technology.avif" type="image/avif">
+            <source srcset="./images/3d-rendering-blockchain-technology.webp" type="image/webp">
+            <img src="/images/3d-rendering-blockchain-technology.jpg" alt="Rendering 3D di tecnologie blockchain"
+            class="hero__img"
+            width="1920"
+            height="1080"
+            loading="eager"
+            decoding="async">
+          </picture>
+        </figure>
+
+        <div class="hero__overlay"></div>
+
         <div class="hero__content container">
           <h1 class="hero__title title">
             Il configuratore <span>KeCert <sup>&#174;</sup></span
@@ -142,6 +160,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             ><span>Configura Ora</span></a
           >
         </div>
+
       </section>
 
       <section class="about section container" id="about">
@@ -170,9 +189,9 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
           <div class="about__wrapper">
             <div class="about__card card">
               <div class="about__card-header">
-                <h2>Sicurezza e autenticità garantite</h2>
+                <h3>Sicurezza e autenticità garantite</h3>
               </div>
-              <div class="about__card-icon">
+              <div class="about__card-icon" aria-hidden="true">
                 <i class="ri-shield-star-fill"></i>
               </div>
               <div class="about__card-body">
@@ -185,9 +204,9 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
             <div class="about__card card">
               <div class="about__card-header">
-                <h2>Facilità d’uso per tutti</h2>
+                <h3>Facilità d’uso per tutti</h3>
               </div>
-              <div class="about__card-icon">
+              <div class="about__card-icon" aria-hidden="true">
                 <i class="ri-user-smile-fill"></i>
               </div>
               <div class="about__card-body">
@@ -200,9 +219,9 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
             <div class="about__card card">
               <div class="about__card-header">
-                <h2>Controllo e trasparenza</h2>
+                <h3>Controllo e trasparenza</h3>
               </div>
-              <div class="about__card-icon">
+              <div class="about__card-icon" aria-hidden="true">
                 <i class="ri-eye-fill"></i>
               </div>
               <div class="about__card-body">
@@ -216,9 +235,9 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
             <div class="about__card card">
               <div class="about__card-header">
-                <h2>Soluzione scalabile e sostenibile</h2>
+                <h3>Soluzione scalabile e sostenibile</h3>
               </div>
-              <div class="about__card-icon">
+              <div class="about__card-icon" aria-hidden="true">
                 <i class="ri-stack-fill"></i>
               </div>
               <div class="about__card-body">
@@ -260,18 +279,18 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             <legend>Di quanti corsi hai bisogno?</legend>
 
             <div class="fieldset__wrapper">
-              <label class="custom-checkbox">
-                <input type="checkbox" name="tipo" value="singolo" />
+              <label for="tipo-singolo"  class="custom-checkbox">
+                <input id="tipo-singolo" type="checkbox" name="tipo" value="singolo" />
                 <span class="checkmark"></span> Corso singolo
               </label>
 
-              <label class="custom-checkbox">
-                <input type="checkbox" name="tipo" value="multipli" />
+              <label for="tipo-multipli" class="custom-checkbox">
+                <input id="tipo-multipli" type="checkbox" name="tipo" value="multipli" />
                 <span class="checkmark"></span> Corsi multipli
               </label>
 
-              <label class="custom-checkbox">
-                <input type="checkbox" name="tipo" value="personalizzato" />
+              <label for="tipo-personalizzato" class="custom-checkbox">
+                <input id="tipo-personalizzato" type="checkbox" name="tipo" value="personalizzato" />
                 <span class="checkmark"></span> Personalizzato
               </label>
             </div>
@@ -315,7 +334,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
           <fieldset class="step" data-step="5">
             <legend>Riepilogo configurazione 📋</legend>
-            <div class="fieldset__wrapper fieldset__wrapper-summary">
+            <div aria-live="polite" class="fieldset__wrapper fieldset__wrapper-summary">
               <div class="summary"></div>
 
               <!-- <div class="summary-wrapper">
@@ -351,7 +370,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
         </form>
 
         <div id="successMessage">
-          <i class="ri-check-double-line"></i>
+          <i class="ri-check-double-line" aria-hidden="true"></i>
           <p>
             Operazione avvenuta con successo ! Ti arriverà un'email con il
             repilogo della configurazione.
@@ -426,7 +445,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                   alt="Reviews Image"
                   class="first-reviews-img"
                 />
-                <i class="ri-double-quotes-l"></i>
+                <i class="ri-double-quotes-l" aria-hidden="true"></i>
               </div>
               <div class="reviews__content">
                 <p class="reviews__text">
@@ -444,7 +463,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                   alt="Reviews Image"
                   class="first-reviews-img"
                 />
-                <i class="ri-double-quotes-l"></i>
+                <i class="ri-double-quotes-l" aria-hidden="true"></i>
               </div>
               <div class="reviews__content">
                 <p class="reviews__text">
@@ -462,7 +481,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                   alt="Reviews Image"
                   class="first-reviews-img"
                 />
-                <i class="ri-double-quotes-l"></i>
+                <i class="ri-double-quotes-l" aria-hidden="true"></i>
               </div>
               <div class="reviews__content">
                 <p class="reviews__text">
@@ -482,7 +501,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                   alt="Reviews Image"
                   class="first-reviews-img"
                 />
-                <i class="ri-double-quotes-l"></i>
+                <i class="ri-double-quotes-l" aria-hidden="true"></i>
               </div>
               <div class="reviews__content">
                 <p class="reviews__text">
@@ -498,10 +517,10 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
 
           <div class="swiper-navigation">
             <div class="swiper-button-prev">
-              <i class="ri-arrow-left-s-line"></i>
+              <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
             </div>
             <div class="swiper-button-next">
-              <i class="ri-arrow-right-s-line"></i>
+              <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
             </div>
           </div>
         </div>
@@ -530,10 +549,20 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
               <a href="#" class="footer__link">FAQ</a>
             </li>
             <li>
-              <a href="https://www.kedos-srl.it/privacy-policy/" target="_blank" class="footer__link">Privacy</a>
+              <a
+                href="https://www.kedos-srl.it/privacy-policy/"
+                target="_blank"
+                class="footer__link"
+                >Privacy</a
+              >
             </li>
             <li>
-              <a href="https://www.kedos-srl.it/contatti/" target="_blank" class="footer__link">Contatti</a>
+              <a
+                href="https://www.kedos-srl.it/contatti/"
+                target="_blank"
+                class="footer__link"
+                >Contatti</a
+              >
             </li>
           </ul>
         </div>
@@ -541,35 +570,44 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
         <div class="footer__right">
           <ul class="footer__social">
             <li>
-              <a href="https://www.linkedin.com/company/kedos-srl" target="_blank">
-                <i class="ri-linkedin-fill" aria-label="Linkedin"></i>
+              <a
+                href="https://www.linkedin.com/company/kedos-srl"
+                target="_blank"
+              >
+                <i class="ri-linkedin-fill" aria-label="Linkedin" aria-hidden="true"></i>
               </a>
             </li>
 
             <li>
-              <a href="https://www.instagram.com/kedos.srl?igsh=dnlqdjQ5b2Jhc3Ru" target="_blank">
-                <i class="ri-instagram-line" aria-label="Instagram"></i>
+              <a
+                href="https://www.instagram.com/kedos.srl?igsh=dnlqdjQ5b2Jhc3Ru"
+                target="_blank"
+              >
+                <i class="ri-instagram-line" aria-label="Instagram" aria-hidden="true"></i>
               </a>
             </li>
 
             <li>
-              <a href="https://www.facebook.com/people/Kedos-Srl/100078119546036/" target="_blank">
-                <i class="ri-facebook-fill" aria-label="Facebook"></i>
+              <a
+                href="https://www.facebook.com/people/Kedos-Srl/100078119546036/"
+                target="_blank"
+              >
+                <i class="ri-facebook-fill" aria-label="Facebook" aria-hidden="true"></i>
               </a>
             </li>
 
             <li>
               <a href="https://www.youtube.com/@kedossrl8775" target="_blank">
-                <i class="ri-youtube-fill" aria-label="Youtube"></i>
+                <i class="ri-youtube-fill" aria-label="Youtube" aria-hidden="true"></i>
               </a>
             </li>
-
           </ul>
+          <p>&copy; 2025 Kedos Srl – Tutti i diritti riservati.</p>
         </div>
       </div>
     </footer>
 
-    <a href="#" class="scrollup" id="scrollUp">
+    <a href="#" class="scrollup" id="scrollUp" aria-hidden="true">
       <i class="ri-arrow-up-line"></i>
     </a>
   </body>
