@@ -31,27 +31,33 @@
     <link rel="canonical" href="https://yourwebsite.com/page-url" />
 
     <!-- Open Graph metadata for social sharing -->
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
+    <meta property="og:title" content="Configura la tua soluzione KeCert" />
+    <meta
+      property="og:description"
+      content="Scopri la soluzione SaaS per emettere certificati blockchain. Calcola il prezzo e configura la tua offerta ideale in pochi click."
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourwebsite.com/page-url" />
+    <meta property="og:url" content="https://kecert.it/configuratore" />
     <meta
       property="og:image"
-      content="https://yourwebsite.com/images/og-image.jpg"
+      content="https://kecert.it/assets/images/og-kecert.jpg"
     />
-    <meta property="og:site_name" content="Your Website Name" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="KeCert" />
+    <meta property="og:locale" content="it_IT" />
 
     <!-- Twitter Card metadata -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:description" content="" />
+    <meta name="twitter:title" content="Configura la tua soluzione KeCert" />
+    <meta
+      name="twitter:description"
+      content="Calcola il costo per emettere certificati digitali con tecnologia blockchain. Facile, personalizzabile e sicuro."
+    />
     <meta
       name="twitter:image"
-      content="https://yourwebsite.com/images/twitter-image.jpg"
+      content="https://kecert.it/assets/images/twitter-kecert.jpg"
     />
-    <meta name="twitter:site" content="@YourTwitterHandle" />
-    <meta name="twitter:creator" content="@YourTwitterHandle" />
+    <meta name="twitter:site" content="@KedosSrl" />
+    <meta name="twitter:creator" content="@KedosSrl" />
 
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
@@ -93,10 +99,10 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
     ></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/style.min.css" />
 
     <!-- Custom JS -->
-    <script src="js/main.js" defer></script>
+    <script src="js/scripts.min.js" defer></script>
   </head>
   <body>
     <header class="header" id="header">
@@ -437,28 +443,34 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
                 Configurazione personalizzata
               </legend>
               <div class="fieldset__wrapper personal-data-wrapper">
-                <label>
+                <label for="nome">
                   Nome completo o ragione sociale:
                   <input
                     type="text"
                     name="nome"
                     placeholder="Inserisci il tuo nome o quello della tua azienda"
+                    id="nome"
                   />
                 </label>
 
-                <label>
+                <label for="email">
                   Email:
                   <input
                     type="email"
                     name="email"
                     placeholder="Inserisci la tua email o quella della tua azienda"
                     required
+                    id="email"
                   />
                 </label>
 
-                <label>
+                <label for="messaggio">
                   Dettagli configurazione:
-                  <textarea name="messaggio" class="personal-text"></textarea>
+                  <textarea
+                    id="messaggio"
+                    name="messaggio"
+                    class="personal-text"
+                  ></textarea>
                 </label>
 
                 <div class="modal-buttons">
