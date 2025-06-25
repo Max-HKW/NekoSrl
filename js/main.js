@@ -199,6 +199,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const infoIcon = document.createElement("i");
     infoIcon.classList.add("ri-information-line", "info-icon");
 
+    const apiDialog = document.getElementById("apiDialog");
+    const closeBtn = document.getElementById("closeApiDialog");
+
+    infoIcon.addEventListener("click", () => {
+      apiDialog.showModal();
+    });
+
+    closeBtn.addEventListener("click", () => {
+      apiDialog.close();
+    });
+
     label.appendChild(input);
     label.appendChild(checkmark);
     label.appendChild(document.createTextNode(" " + labelText));
