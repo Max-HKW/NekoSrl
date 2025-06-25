@@ -27,7 +27,7 @@
 
   /* FONT */
 
-  --primary-font: 'Lato', sans-serif;
+  --primary-font: "Lato", sans-serif;
 
   --big-font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
   --h1-font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
@@ -321,7 +321,7 @@ svg {
 
 .nav__link::after {
   position: absolute;
-  content: '';
+  content: "";
   width: 0;
   height: 2px;
   background-color: var(--secondary);
@@ -379,7 +379,7 @@ svg {
   min-height: 700px;
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .hero__img {
     min-height: 900px;
   }
@@ -634,6 +634,7 @@ svg {
   /* padding-inline: 4rem; */
   position: relative;
   margin: 3.5rem auto;
+  /* transform: scale(.9); */
 }
 
 .feature__steps .feature__circle {
@@ -862,7 +863,7 @@ fieldset.step.active {
 }
 
 .optionalChoices input:checked + .checkmark::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 2px;
   left: 5px;
@@ -878,11 +879,18 @@ fieldset.step.active {
   color: var(--primary);
 }
 
-.optionalChoices::after {
+/* .optionalChoices::before {
+  position: fixed;
+  content: '';
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+} */
+
+/* .optionalChoices::after {
   position: absolute;
   content: attr(data-tooltip);
   top: 100%;
-  left: 69%;
+  left: 79%;
   transform: translateY(-50%);
   background-color: var(--primary);
   color: var(--white-color);
@@ -895,7 +903,7 @@ fieldset.step.active {
   visibility: hidden;
   text-align: center;
   white-space: nowrap;
-}
+} */
 
 .optionalChoices:hover::after,
 .optionalChoices.active::after {
@@ -965,7 +973,7 @@ fieldset.step.active {
 }
 
 .custom-checkbox input:checked + .checkmark::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 2px;
   left: 5px;
@@ -1056,6 +1064,7 @@ fieldset.step.active {
   inset-block-start: -95%;
 }
 
+#apiDialog,
 dialog {
   border: none;
   border-radius: 1rem;
@@ -1073,6 +1082,23 @@ dialog[open] {
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
+}
+
+#apiDialog {
+  padding-block: 2rem;
+}
+
+#apiDialogTitle,
+#apiDialogDesc {
+  margin-bottom: 1rem;
+}
+
+#apiDialogTitle {
+  color: var(--secondary);
+}
+
+#apiDialogDesc strong {
+  color: var(--secondary);
 }
 
 .personal-data-field {
@@ -1308,7 +1334,7 @@ dialog::backdrop {
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  content: '';
+  content: "";
 }
 
 @media (min-width: 768px) {
@@ -1372,7 +1398,7 @@ dialog::backdrop {
 
 .footer__link::after {
   position: absolute;
-  content: '';
+  content: "";
   width: 0;
   height: 2px;
   background-color: var(--primary);
@@ -1431,7 +1457,7 @@ dialog::backdrop {
 
 .footer__social a::after {
   position: absolute;
-  content: '';
+  content: "";
   inset: 100% 0 0;
   background-color: var(--primary);
   pointer-events: none;
@@ -1453,15 +1479,16 @@ dialog::backdrop {
   right: -100%;
   bottom: 3rem;
   background-color: rgba(110, 164, 143, 0.8);
-  padding: 6px;
+  padding: 8px;
   display: inline-flex;
   color: var(--white-color);
-  font-size: 1.25rem;
+  font-size: 1.8rem;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   z-index: var(--z-fixed);
   transition: right 0.3s, transform 0.3s;
   box-shadow: var(--shadow);
+  border-radius: 8px;
 }
 
 .scrollup:hover {
