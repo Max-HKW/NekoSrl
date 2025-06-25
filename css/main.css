@@ -857,6 +857,10 @@ fieldset.step.active {
   display: none;
 }
 
+.optionalChoices i {
+  margin-left: 0.5rem;
+}
+
 .optionalChoices input:checked + .checkmark::after {
   content: '';
   position: absolute;
@@ -867,6 +871,11 @@ fieldset.step.active {
   border: solid var(--first-card);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  color: var(--primary);
 }
 
 .optionalChoices::after {
@@ -907,11 +916,12 @@ fieldset.step.active {
 
 .list-summary input {
   padding: 0.5rem 1rem;
-}
-
-.list-summary input:focus {
   border: 2px solid var(--secondary);
 }
+
+/* .list-summary input:focus {
+  
+} */
 
 /* .custom-checkbox:not(:last-child) {
   margin-bottom: 1rem;
