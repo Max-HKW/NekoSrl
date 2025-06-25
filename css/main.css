@@ -376,7 +376,13 @@ svg {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  min-height: 500px;
+  min-height: 700px;
+}
+
+@media (min-width:768px) {
+  .hero__img {
+    min-height: 900px;
+  }
 }
 
 .hero__overlay {
@@ -1159,7 +1165,7 @@ dialog::backdrop {
 }
 
 .reviews__card {
-  height: 25vh;
+  height: 15vh;
   width: 65vw;
   padding: 2rem;
   display: flex;
