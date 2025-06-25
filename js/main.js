@@ -427,6 +427,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   personalDataForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    const personalData = new FormData(personalDataForm);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(personalData).toString(),
+    })
+      .then(() => {
+        form.style.display = "none";
+        successMessage.style.display = "block";
+      })
+      .catch((error) => alert(error));
   });
 
   const nameInput = personalDataForm.querySelector('[name="nome"]');
@@ -505,10 +518,21 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     const btnSummary = document.getElementById("btnSummary");
     e.preventDefault();
-    successMessage.style.display = "block";
-    form.style.display = "none";
-    btnSummary.style.display = "none";
-    conditionalPadding();
+
+    const data = new FormData(form);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
+    })
+      .then(() => {
+        successMessage.style.display = "block";
+        form.style.display = "none";
+        btnSummary.style.display = "none";
+        conditionalPadding();
+      })
+      .catch((error) => alert(error));
   });
 
   validateStep();
