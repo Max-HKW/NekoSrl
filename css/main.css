@@ -907,11 +907,12 @@ fieldset.step.active {
 
 .list-summary input {
   padding: 0.5rem 1rem;
-}
-
-.list-summary input:focus {
   border: 2px solid var(--secondary);
 }
+
+/* .list-summary input:focus {
+  
+} */
 
 /* .custom-checkbox:not(:last-child) {
   margin-bottom: 1rem;
