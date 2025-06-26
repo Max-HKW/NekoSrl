@@ -373,7 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const opzioneSingolo = document.querySelector(
         'input[name="opzione_singolo"]:checked'
       )?.value;
-      const prezzo = opzioneSingolo.split('_')[1];
+      const prezzo = opzioneSingolo.split("_")[1];
       const form = document.getElementById("feature__form");
       const data = new FormData(form);
       const value = data.get("opzione_singolo");
@@ -390,45 +390,76 @@ document.addEventListener("DOMContentLoaded", () => {
         '#feature__form input[name="contatto_email"]'
       )?.value;
 
-      hiddenForm.querySelector('[name="prezzo"]').value =
-        prezzo || "";
-      hiddenForm.querySelector('[name="numero_corsi"]').value =
-        'Singolo';
-      hiddenForm.querySelector('[name="studenti"]').value = 'Illimitati';
+      hiddenForm.querySelector('[name="prezzo"]').value = prezzo || "";
+      hiddenForm.querySelector('[name="numero_corsi"]').value = "Singolo";
+      hiddenForm.querySelector('[name="studenti"]').value = "Illimitati";
       hiddenForm.querySelector('[name="durata"]').value = durata || "";
       hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi || "";
       hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
       hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
     } else if (tipo === "multipli") {
-      const numeroCorsi = step2Content.querySelector(
-        'input[name="numero_corsi"]:checked'
-      )?.value;
-      const prezzo = step2Content.querySelector(
-        'input[name="prezzo"]:checked'
-      )?.value;
-      const studenti = form.querySelector(
-        'input[name="studenti"]'
-      )?.value;
-      const durata = document.querySelector(
-        '#feature__form input[name="durata"]'
-      )?.value;
-      const accessoApi = document.querySelector(
-        '#feature__form input[name="accesso_api"]:checked'
-      )?.value;
-      const nome = document.querySelector(
-        '#feature__form input[name="contatto_nome"]'
-      )?.value;
-      const email = document.querySelector(
-        '#feature__form input[name="contatto_email"]'
-      )?.value;
+      // const form = document.getElementById("feature__form");
+      // const data = new FormData(form);
 
-      hiddenForm.querySelector('[name="numero_corsi"]').value =
-        numeroCorsi || "";
-      hiddenForm.querySelector('[name="studenti"]').value = studenti || "";
-      hiddenForm.querySelector('[name="durata"]').value = durata || "";
-      hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi || "";
-      hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
-      hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
+      // const numeroCorsi = step2Content.querySelector(
+      //   'input[name="numero_corsi"]:checked'
+      // )?.value;
+      // const prezzo = step2Content.querySelector(
+      //   'input[name="prezzo"]:checked'
+      // )?.value;
+      // const studenti = data.get('studenti')
+      // const durata = data.get('durata');
+      // const accessoApi = document.querySelector(
+      //   '#feature__form input[name="accesso_api"]:checked'
+      // )?.value;
+      // const nome = document.querySelector(
+      //   '#feature__form input[name="contatto_nome"]'
+      // )?.value;
+      // const email = document.querySelector(
+      //   '#feature__form input[name="contatto_email"]'
+      // )?.value;
+
+      // hiddenForm.querySelector('[name="numero_corsi"]').value =
+      //   numeroCorsi || "";
+      // hiddenForm.querySelector('[name="studenti"]').value = studenti || "";
+      // hiddenForm.querySelector('[name="durata"]').value = durata || "";
+      // hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi || "";
+      // hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
+      // hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
+
+      const form = document.getElementById("feature__form");
+      const data = new FormData(form);
+
+      const numeroCorsi =
+        step2Content.querySelector('input[name="numero_corsi"]:checked')
+          ?.value || "";
+
+      const prezzo =
+        step2Content.querySelector('input[name="prezzo"]:checked')?.value || "";
+
+      const studenti = data.get("studenti") || "";
+      const durata = data.get("durata") || "";
+
+      const accessoApi =
+        document.querySelector(
+          '#feature__form input[name="accesso_api"]:checked'
+        )?.value || "";
+
+      const nome =
+        document.querySelector('#feature__form input[name="contatto_nome"]')
+          ?.value || "";
+
+      const email =
+        document.querySelector('#feature__form input[name="contatto_email"]')
+          ?.value || "";
+
+      hiddenForm.querySelector('[name="numero_corsi"]').value = numeroCorsi;
+      hiddenForm.querySelector('[name="studenti"]').value = studenti;
+      hiddenForm.querySelector('[name="durata"]').value = durata;
+      hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi;
+      hiddenForm.querySelector('[name="contatto_nome"]').value = nome;
+      hiddenForm.querySelector('[name="contatto_email"]').value = email;
+      hiddenForm.querySelector('[name="prezzo"]').value = prezzo;
     } else if (tipo === "personalizzato") {
       const nome = document.querySelector(
         '#personalDataForm input[name="nome"]'
