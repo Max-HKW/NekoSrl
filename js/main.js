@@ -405,8 +405,8 @@ document.addEventListener("DOMContentLoaded", () => {
       hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
       hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
     } else if (tipo === "multipli") {
-      const numeroCorsi = document.querySelector(
-        '#feature__form input[name="numero_corsi"]'
+      const numeroCorsi = step2Content.querySelector(
+        'input[name="numero_corsi"]'
       )?.value;
       const studenti = document.querySelector(
         '#feature__form input[name="studenti"]'
