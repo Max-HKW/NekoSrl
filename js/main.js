@@ -401,14 +401,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const form = document.getElementById("feature__form");
       const data = new FormData(form);
 
+      const courses = data.get("numero_corsi");
+      const students = data.get("studenti");
+      const duration = data.get("durata");
+      const key = `${courses}_${students}_${duration}`;
+      price = pricesMultipleCourses[key] || 0;
+
       const numeroCorsi =
         step2Content.querySelector('input[name="numero_corsi"]:checked')
           ?.value || "";
 
-      const prezzo =
-        step2Content.querySelector('input[name="prezzo"]:checked')?.value || "";
-
-      const studenti = form.querySelector('input[name="studenti"]:checked')?.value || "";
+      const studenti =
+        form.querySelector('input[name="studenti"]:checked')?.value || "";
       const durata = data.get("durata") || "";
 
       const accessoApi =
@@ -430,7 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi;
       hiddenForm.querySelector('[name="contatto_nome"]').value = nome;
       hiddenForm.querySelector('[name="contatto_email"]').value = email;
-      hiddenForm.querySelector('[name="prezzo"]').value = prezzo;
+      hiddenForm.querySelector('[name="prezzo"]').value = price;
     } else if (tipo === "personalizzato") {
       const nome = document.querySelector(
         '#personalDataForm input[name="nome"]'
