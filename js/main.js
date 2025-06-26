@@ -398,35 +398,6 @@ document.addEventListener("DOMContentLoaded", () => {
       hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
       hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
     } else if (tipo === "multipli") {
-      // const form = document.getElementById("feature__form");
-      // const data = new FormData(form);
-
-      // const numeroCorsi = step2Content.querySelector(
-      //   'input[name="numero_corsi"]:checked'
-      // )?.value;
-      // const prezzo = step2Content.querySelector(
-      //   'input[name="prezzo"]:checked'
-      // )?.value;
-      // const studenti = data.get('studenti')
-      // const durata = data.get('durata');
-      // const accessoApi = document.querySelector(
-      //   '#feature__form input[name="accesso_api"]:checked'
-      // )?.value;
-      // const nome = document.querySelector(
-      //   '#feature__form input[name="contatto_nome"]'
-      // )?.value;
-      // const email = document.querySelector(
-      //   '#feature__form input[name="contatto_email"]'
-      // )?.value;
-
-      // hiddenForm.querySelector('[name="numero_corsi"]').value =
-      //   numeroCorsi || "";
-      // hiddenForm.querySelector('[name="studenti"]').value = studenti || "";
-      // hiddenForm.querySelector('[name="durata"]').value = durata || "";
-      // hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi || "";
-      // hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
-      // hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
-
       const form = document.getElementById("feature__form");
       const data = new FormData(form);
 
@@ -437,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const prezzo =
         step2Content.querySelector('input[name="prezzo"]:checked')?.value || "";
 
-      const studenti = data.get("studenti") || "";
+      const studenti = form.querySelector('input[name="studenti"]:checked')?.value || "";
       const durata = data.get("durata") || "";
 
       const accessoApi =
