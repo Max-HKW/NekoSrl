@@ -400,12 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (tipo === "multipli") {
       const form = document.getElementById("feature__form");
       const data = new FormData(form);
-      const courses = data.get("numero_corsi");
-      const students = data.get("studenti");
-      const duration = data.get("durata");
-      const key = `${courses}_${students}_${duration}`;
-      price = pricesMultipleCourses[key] || 0;
-
+   
       const numeroCorsi =
         form.querySelector('input[name="numero_corsi"]:checked')?.value || "";
 
