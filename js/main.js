@@ -359,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function populateHiddenForm() {
     const hiddenForm = document.forms["configuratore"];
-    
+
     const tipo = form.querySelector('input[name="tipo"]:checked')?.value;
 
     if (!tipo) {
@@ -374,19 +374,19 @@ document.addEventListener("DOMContentLoaded", () => {
         'input[name="opzione_singolo"]:checked'
       )?.value;
       const studenti = document.querySelector(
-        '#formSingolo input[name="studenti"]'
+        '#feature__form input[name="studenti"]'
       )?.value;
       const durata = document.querySelector(
-        '#formSingolo input[name="durata"]'
+        '#feature__form input[name="durata"]'
       )?.value;
       const accessoApi = document.querySelector(
-        '#formSingolo input[name="accesso_api"]:checked'
+        '#feature__form input[name="accesso_api"]:checked'
       )?.value;
       const nome = document.querySelector(
-        '#formSingolo input[name="contatto_nome"]'
+        '#feature__form input[name="contatto_nome"]'
       )?.value;
       const email = document.querySelector(
-        '#formSingolo input[name="contatto_email"]'
+        '#feature__form input[name="contatto_email"]'
       )?.value;
 
       hiddenForm.querySelector('[name="opzione_singolo"]').value =
@@ -398,22 +398,22 @@ document.addEventListener("DOMContentLoaded", () => {
       hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
     } else if (tipo === "multipli") {
       const numeroCorsi = document.querySelector(
-        '#formMultipli input[name="numero_corsi"]'
+        '#feature__form input[name="numero_corsi"]'
       )?.value;
       const studenti = document.querySelector(
-        '#formMultipli input[name="studenti"]'
+        '#feature__form input[name="studenti"]'
       )?.value;
       const durata = document.querySelector(
-        '#formMultipli input[name="durata"]'
+        '#feature__form input[name="durata"]'
       )?.value;
       const accessoApi = document.querySelector(
-        '#formMultipli input[name="accesso_api"]:checked'
+        '#feature__form input[name="accesso_api"]:checked'
       )?.value;
       const nome = document.querySelector(
-        '#formMultipli input[name="contatto_nome"]'
+        '#feature__form input[name="contatto_nome"]'
       )?.value;
       const email = document.querySelector(
-        '#formMultipli input[name="contatto_email"]'
+        '#feature__form input[name="contatto_email"]'
       )?.value;
 
       hiddenForm.querySelector('[name="numero_corsi"]').value =
@@ -425,14 +425,18 @@ document.addEventListener("DOMContentLoaded", () => {
       hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
     } else if (tipo === "personalizzato") {
       const nome = document.querySelector(
-        '#formPersonalizzato input[name="contatto_nome"]'
+        '#personalDataForm input[name="nome"]'
       )?.value;
       const email = document.querySelector(
-        '#formPersonalizzato input[name="contatto_email"]'
+        '#personalDataForm input[name="email"]'
+      )?.value;
+      const messaggio = document.querySelector(
+        '#personalDataForm textarea'
       )?.value;
 
-      hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
-      hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
+      hiddenForm.querySelector('[name="nome"]').value = nome || "";
+      hiddenForm.querySelector('[name="email"]').value = email || "";
+      hiddenForm.querySelector('[name="messaggio"]').value = messaggio || "";
     }
   }
 
