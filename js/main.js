@@ -359,10 +359,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function populateHiddenForm() {
     const hiddenForm = document.forms["configuratore"];
-
-    const tipo = document.querySelector(
-      'input[name="tipo-opzione"]:checked'
-    )?.value;
+    
+    const tipo = form.querySelector('input[name="tipo"]:checked')?.value;
 
     if (!tipo) {
       console.warn("Tipo di configurazione non selezionato");
