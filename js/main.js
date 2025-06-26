@@ -373,6 +373,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const opzioneSingolo = document.querySelector(
         'input[name="opzione_singolo"]:checked'
       )?.value;
+      const value = data.get("opzione_singolo");
+      if (!value) return;
+      const numero_corsi = value.split("_")[0];
       const studenti = document.querySelector(
         '#feature__form input[name="studenti"]'
       )?.value;
@@ -391,6 +394,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       hiddenForm.querySelector('[name="opzione_singolo"]').value =
         opzioneSingolo || "";
+      hiddenForm.querySelector('[name="numero_corsi"]').value =
+        numero_corsi || "";
       hiddenForm.querySelector('[name="studenti"]').value = studenti || "";
       hiddenForm.querySelector('[name="durata"]').value = durata || "";
       hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi || "";
@@ -431,7 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
         '#personalDataForm input[name="email"]'
       )?.value;
       const messaggio = document.querySelector(
-        '#personalDataForm textarea'
+        "#personalDataForm textarea"
       )?.value;
 
       hiddenForm.querySelector('[name="nome"]').value = nome || "";
@@ -511,34 +516,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // personalDataForm.addEventListener("submit", (e) => {
   //   e.preventDefault();
 
-  //   populateHiddenForm(); 
+  //   populateHiddenForm();
   //   document.forms["configuratore"].submit();
 
   //   conditionalPadding();
   // });
 
   personalDataForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  populateHiddenForm();
+    populateHiddenForm();
 
-  const formData = new FormData(document.forms["configuratore"]);
+    const formData = new FormData(document.forms["configuratore"]);
 
-  try {
-    const response = await fetch(document.forms["configuratore"].action, {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const response = await fetch(document.forms["configuratore"].action, {
+        method: "POST",
+        body: formData,
+      });
 
-    if (response.ok) {
-      conditionalPadding();
-    } else {
-      console.error("Errore nella risposta del server", response.statusText);
+      if (response.ok) {
+        conditionalPadding();
+      } else {
+        console.error("Errore nella risposta del server", response.statusText);
+      }
+    } catch (error) {
+      console.error("Errore nella fetch", error);
     }
-  } catch (error) {
-    console.error("Errore nella fetch", error);
-  }
-});
+  });
 
   const nameInput = personalDataForm.querySelector('[name="nome"]');
   const emailInput = personalDataForm.querySelector('[name="email"]');
@@ -628,35 +633,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // });
 
   form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const btnSummary = document.getElementById("btnSummary");
+    const btnSummary = document.getElementById("btnSummary");
 
-  populateHiddenForm();
+    populateHiddenForm();
 
-  const formData = new FormData(document.forms["configuratore"]);
+    const formData = new FormData(document.forms["configuratore"]);
 
-  try {
-    const response = await fetch(document.forms["configuratore"].action, {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const response = await fetch(document.forms["configuratore"].action, {
+        method: "POST",
+        body: formData,
+      });
 
-    if (response.ok) {
-      successMessage.style.display = "block";
-      form.style.display = "none";
-      btnSummary.style.display = "none";
-      conditionalPadding();
-    } else {
-      console.error("Errore nella risposta del server", response.statusText);
+      if (response.ok) {
+        successMessage.style.display = "block";
+        form.style.display = "none";
+        btnSummary.style.display = "none";
+        conditionalPadding();
+      } else {
+        console.error("Errore nella risposta del server", response.statusText);
+      }
+    } catch (error) {
+      console.error("Errore nella fetch", error);
     }
-  } catch (error) {
-    console.error("Errore nella fetch", error);
-  }
 
-  validateStep();
-});
-
+    validateStep();
+  });
 
   validateStep();
 });
