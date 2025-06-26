@@ -357,10 +357,101 @@ document.addEventListener("DOMContentLoaded", () => {
     btnSummary.style.display = "inline-block";
   }
 
+  // function populateHiddenForm() {
+  //   const hiddenForm = document.forms["configuratore"];
+
+  //   const tipo = form.querySelector('input[name="tipo"]:checked')?.value;
+
+  //   if (!tipo) {
+  //     console.warn("Tipo di configurazione non selezionato");
+  //     return;
+  //   }
+
+  //   hiddenForm.querySelector('[name="tipo"]').value = tipo;
+
+  //   if (tipo === "singolo") {
+  //     const opzioneSingolo = document.querySelector(
+  //       'input[name="opzione_singolo"]:checked'
+  //     )?.value;
+  //     const form = document.getElementById("feature__form");
+  //     const data = new FormData(form);
+  //     const value = data.get("opzione_singolo");
+  //     if (!value) return;
+  //     const numero_corsi = value.split("_")[0];
+
+  //     const studenti = document.querySelector(
+  //       '#feature__form input[name="studenti"]'
+  //     )?.value;
+  //     const durata = document.querySelector(
+  //       '#feature__form input[name="durata"]'
+  //     )?.value;
+  //     const accessoApi = document.querySelector(
+  //       '#feature__form input[name="accesso_api"]:checked'
+  //     )?.value;
+  //     const nome = document.querySelector(
+  //       '#feature__form input[name="contatto_nome"]'
+  //     )?.value;
+  //     const email = document.querySelector(
+  //       '#feature__form input[name="contatto_email"]'
+  //     )?.value;
+
+  //     hiddenForm.querySelector('[name="opzione_singolo"]').value =
+  //       opzioneSingolo || "";
+  //     hiddenForm.querySelector('[name="numero_corsi"]').value =
+  //       numero_corsi || "";
+  //     hiddenForm.querySelector('[name="studenti"]').value = studenti || "";
+  //     hiddenForm.querySelector('[name="durata"]').value = durata || "";
+  //     hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi || "";
+  //     hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
+  //     hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
+  //   } else if (tipo === "multipli") {
+  //     const numeroCorsi = step2Content.querySelector(
+  //       'input[name="numero_corsi"]:checked'
+  //     )?.value;
+  //     const studenti = document.querySelector(
+  //       '#feature__form input[name="studenti"]'
+  //     )?.value;
+  //     const durata = document.querySelector(
+  //       '#feature__form input[name="durata"]'
+  //     )?.value;
+  //     const accessoApi = document.querySelector(
+  //       '#feature__form input[name="accesso_api"]:checked'
+  //     )?.value;
+  //     const nome = document.querySelector(
+  //       '#feature__form input[name="contatto_nome"]'
+  //     )?.value;
+  //     const email = document.querySelector(
+  //       '#feature__form input[name="contatto_email"]'
+  //     )?.value;
+
+  //     hiddenForm.querySelector('[name="numero_corsi"]').value =
+  //       numeroCorsi || "";
+  //     hiddenForm.querySelector('[name="studenti"]').value = studenti || "";
+  //     hiddenForm.querySelector('[name="durata"]').value = durata || "";
+  //     hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi || "";
+  //     hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
+  //     hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
+  //   } else if (tipo === "personalizzato") {
+  //     const nome = document.querySelector(
+  //       '#personalDataForm input[name="nome"]'
+  //     )?.value;
+  //     const email = document.querySelector(
+  //       '#personalDataForm input[name="email"]'
+  //     )?.value;
+  //     const messaggio = document.querySelector(
+  //       "#personalDataForm textarea"
+  //     )?.value;
+
+  //     hiddenForm.querySelector('[name="nome"]').value = nome || "";
+  //     hiddenForm.querySelector('[name="email"]').value = email || "";
+  //     hiddenForm.querySelector('[name="messaggio"]').value = messaggio || "";
+  //   }
+  // }
+
   function populateHiddenForm() {
     const hiddenForm = document.forms["configuratore"];
-
-    const tipo = form.querySelector('input[name="tipo"]:checked')?.value;
+    const formData = new FormData(form); // Form principale
+    const tipo = formData.get("tipo");
 
     if (!tipo) {
       console.warn("Tipo di configurazione non selezionato");
@@ -369,83 +460,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     hiddenForm.querySelector('[name="tipo"]').value = tipo;
 
+    // Singolo
     if (tipo === "singolo") {
-      const opzioneSingolo = document.querySelector(
-        'input[name="opzione_singolo"]:checked'
-      )?.value;
-      const form = document.getElementById("feature__form");
-      const data = new FormData(form);
-      const value = data.get("opzione_singolo");
-      if (!value) return;
-      const numero_corsi = value.split("_")[0];
-
-      const studenti = document.querySelector(
-        '#feature__form input[name="studenti"]'
-      )?.value;
-      const durata = document.querySelector(
-        '#feature__form input[name="durata"]'
-      )?.value;
-      const accessoApi = document.querySelector(
-        '#feature__form input[name="accesso_api"]:checked'
-      )?.value;
-      const nome = document.querySelector(
-        '#feature__form input[name="contatto_nome"]'
-      )?.value;
-      const email = document.querySelector(
-        '#feature__form input[name="contatto_email"]'
-      )?.value;
-
       hiddenForm.querySelector('[name="opzione_singolo"]').value =
-        opzioneSingolo || "";
-      hiddenForm.querySelector('[name="numero_corsi"]').value =
-        numero_corsi || "";
-      hiddenForm.querySelector('[name="studenti"]').value = studenti || "";
-      hiddenForm.querySelector('[name="durata"]').value = durata || "";
-      hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi || "";
-      hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
-      hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
-    } else if (tipo === "multipli") {
-      const numeroCorsi = step2Content.querySelector(
-        'input[name="numero_corsi"]:checked'
-      )?.value;
-      const studenti = document.querySelector(
-        '#feature__form input[name="studenti"]'
-      )?.value;
-      const durata = document.querySelector(
-        '#feature__form input[name="durata"]'
-      )?.value;
-      const accessoApi = document.querySelector(
-        '#feature__form input[name="accesso_api"]:checked'
-      )?.value;
-      const nome = document.querySelector(
-        '#feature__form input[name="contatto_nome"]'
-      )?.value;
-      const email = document.querySelector(
-        '#feature__form input[name="contatto_email"]'
-      )?.value;
-
-      hiddenForm.querySelector('[name="numero_corsi"]').value =
-        numeroCorsi || "";
-      hiddenForm.querySelector('[name="studenti"]').value = studenti || "";
-      hiddenForm.querySelector('[name="durata"]').value = durata || "";
-      hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi || "";
-      hiddenForm.querySelector('[name="contatto_nome"]').value = nome || "";
-      hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
-    } else if (tipo === "personalizzato") {
-      const nome = document.querySelector(
-        '#personalDataForm input[name="nome"]'
-      )?.value;
-      const email = document.querySelector(
-        '#personalDataForm input[name="email"]'
-      )?.value;
-      const messaggio = document.querySelector(
-        "#personalDataForm textarea"
-      )?.value;
-
-      hiddenForm.querySelector('[name="nome"]').value = nome || "";
-      hiddenForm.querySelector('[name="email"]').value = email || "";
-      hiddenForm.querySelector('[name="messaggio"]').value = messaggio || "";
+        formData.get("opzione_singolo") || "";
+      hiddenForm.querySelector('[name="numero_corsi"]').value = "";
+      hiddenForm.querySelector('[name="studenti"]').value = "";
+      hiddenForm.querySelector('[name="durata"]').value = "";
     }
+
+    // Multipli
+    if (tipo === "multipli") {
+      hiddenForm.querySelector('[name="opzione_singolo"]').value = "";
+      hiddenForm.querySelector('[name="numero_corsi"]').value =
+        formData.get("numero_corsi") || "";
+      hiddenForm.querySelector('[name="studenti"]').value =
+        formData.get("studenti") || "";
+      hiddenForm.querySelector('[name="durata"]').value =
+        formData.get("durata") || "";
+    }
+
+    // Personalizzato (prende da altro form)
+    if (tipo === "personalizzato") {
+      const personalData = new FormData(personalDataForm);
+      hiddenForm.querySelector('[name="opzione_singolo"]').value = "";
+      hiddenForm.querySelector('[name="numero_corsi"]').value = "";
+      hiddenForm.querySelector('[name="studenti"]').value = "";
+      hiddenForm.querySelector('[name="durata"]').value = "";
+
+      hiddenForm.querySelector('[name="contatto_nome"]').value =
+        personalData.get("nome") || "";
+      hiddenForm.querySelector('[name="contatto_email"]').value =
+        personalData.get("email") || "";
+      hiddenForm.querySelector('[name="messaggio"]').value =
+        personalData.get("messaggio") || "";
+    } else {
+      // Per singolo/multipli: nome, email dal riepilogo
+      hiddenForm.querySelector('[name="contatto_nome"]').value =
+        formData.get("contatto_nome") || "";
+      hiddenForm.querySelector('[name="contatto_email"]').value =
+        formData.get("contatto_email") || "";
+      hiddenForm.querySelector('[name="messaggio"]').value = "";
+    }
+
+    // Accesso API (opzionale per tutti)
+    hiddenForm.querySelector('[name="accesso_api"]').value =
+      formData.get("accesso_api") || "";
   }
 
   form.addEventListener("change", (e) => {
