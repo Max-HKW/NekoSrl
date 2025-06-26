@@ -506,14 +506,37 @@ document.addEventListener("DOMContentLoaded", () => {
     updateNavigation();
   });
 
-  personalDataForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+  // personalDataForm.addEventListener("submit", (e) => {
+  //   e.preventDefault();
 
-    populateHiddenForm(); 
-    document.forms["configuratore"].submit();
+  //   populateHiddenForm(); 
+  //   document.forms["configuratore"].submit();
 
-    conditionalPadding();
-  });
+  //   conditionalPadding();
+  // });
+
+  personalDataForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  populateHiddenForm();
+
+  const formData = new FormData(document.forms["configuratore"]);
+
+  try {
+    const response = await fetch(document.forms["configuratore"].action, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      conditionalPadding();
+    } else {
+      console.error("Errore nella risposta del server", response.statusText);
+    }
+  } catch (error) {
+    console.error("Errore nella fetch", error);
+  }
+});
 
   const nameInput = personalDataForm.querySelector('[name="nome"]');
   const emailInput = personalDataForm.querySelector('[name="email"]');
@@ -588,19 +611,50 @@ document.addEventListener("DOMContentLoaded", () => {
     prevBtn.disabled = true;
   });
 
-  form.addEventListener("submit", (e) => {
-    const btnSummary = document.getElementById("btnSummary");
-    e.preventDefault();
+  // form.addEventListener("submit", (e) => {
+  //   const btnSummary = document.getElementById("btnSummary");
+  //   e.preventDefault();
 
-    populateHiddenForm();
+  //   populateHiddenForm();
 
-    document.forms["configuratore"].submit();
+  //   document.forms["configuratore"].submit();
 
-    successMessage.style.display = "block";
-    form.style.display = "none";
-    btnSummary.style.display = "none";
-    conditionalPadding();
-  });
+  //   successMessage.style.display = "block";
+  //   form.style.display = "none";
+  //   btnSummary.style.display = "none";
+  //   conditionalPadding();
+  // });
+
+  form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const btnSummary = document.getElementById("btnSummary");
+
+  populateHiddenForm();
+
+  const formData = new FormData(document.forms["configuratore"]);
+
+  try {
+    const response = await fetch(document.forms["configuratore"].action, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      successMessage.style.display = "block";
+      form.style.display = "none";
+      btnSummary.style.display = "none";
+      conditionalPadding();
+    } else {
+      console.error("Errore nella risposta del server", response.statusText);
+    }
+  } catch (error) {
+    console.error("Errore nella fetch", error);
+  }
+
+  validateStep();
+});
+
 
   validateStep();
 });
