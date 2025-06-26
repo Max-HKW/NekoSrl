@@ -433,7 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi;
       hiddenForm.querySelector('[name="contatto_nome"]').value = nome;
       hiddenForm.querySelector('[name="contatto_email"]').value = email;
-      hiddenForm.querySelector('[name="prezzo"]').value = price;
+      hiddenForm.querySelector('[name="prezzo"]').value = '';
     } else if (tipo === "personalizzato") {
       const nome = document.querySelector(
         '#personalDataForm input[name="nome"]'
