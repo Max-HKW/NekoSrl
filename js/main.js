@@ -405,7 +405,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const students = data.get("studenti");
       const duration = data.get("durata");
       const key = `${courses}_${students}_${duration}`;
-      price = pricesMultipleCourses[key] || 0;
 
       const numeroCorsi =
         step2Content.querySelector('input[name="numero_corsi"]:checked')
