@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = new FormData(form);
 
       const numeroCorsi =
-        step2Content.querySelector('input[name="numero_corsi"]:checked')
+        form.querySelector('input[name="numero_corsi"]:checked')
           ?.value || "";
 
       const studenti =
