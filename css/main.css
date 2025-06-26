@@ -1097,6 +1097,10 @@ dialog::backdrop {
   color: var(--secondary);
 }
 
+#apiDialogDesc {
+  line-height: 1.5;
+}
+
 #apiDialogDesc strong {
   color: var(--secondary);
 }
