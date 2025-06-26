@@ -373,12 +373,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const opzioneSingolo = document.querySelector(
         'input[name="opzione_singolo"]:checked'
       )?.value;
-      const form = document.getElementById("feature__form"),
+      const form = document.getElementById("feature__form");
       const data = new FormData(form);
         const value = data.get("opzione_singolo");
       if (!value) return;
       const numero_corsi = value.split("_")[0];
-      
+
       const studenti = document.querySelector(
         '#feature__form input[name="studenti"]'
       )?.value;
