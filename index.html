@@ -437,7 +437,12 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
         </div>
 
         <dialog class="modal" id="modal">
-          <form id="personalDataForm" method="POST" netlify netlify-honeypot="bot-field">
+          <form
+            id="personalDataForm"
+            method="POST"
+            netlify
+            netlify-honeypot="bot-field"
+          >
             <fieldset class="personal-data-field">
               <legend class="personal-data-legend">
                 Configurazione personalizzata
@@ -503,9 +508,8 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             L'integrazione consente la comunicazione diretta tra i tuoi sistemi
             e la piattaforma per l'automazione dell'emissione certificati.
           </p>
-          <button id="closeApiDialog" class="btn ">Chiudi</button>
+          <button id="closeApiDialog" class="btn">Chiudi</button>
         </dialog>
-
       </section>
 
       <section class="reviews section container" id="reviews">
@@ -716,5 +720,26 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
     <a href="#" class="scrollup" id="scrollUp">
       <i class="ri-arrow-up-line"></i>
     </a>
+
+    <form
+      name="configuratore"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="configuratore" />
+      <input type="text" name="bot-field" style="display: none" />
+
+      <!-- Campi comuni -->
+      <input type="hidden" name="tipo" />
+      <input type="hidden" name="opzione_singolo" />
+      <input type="hidden" name="numero_corsi" />
+      <input type="hidden" name="studenti" />
+      <input type="hidden" name="durata" />
+      <input type="hidden" name="accesso_api" />
+      <input type="hidden" name="contatto_nome" />
+      <input type="hidden" name="contatto_email" />
+    </form>
   </body>
 </html>
