@@ -406,8 +406,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const prezzo = step2Content.querySelector(
         'input[name="prezzo"]:checked'
       )?.value;
-      const studenti = document.querySelector(
-        '#feature__form input[name="studenti"]'
+      const studenti = form.querySelector(
+        'input[name="studenti"]'
       )?.value;
       const durata = document.querySelector(
         '#feature__form input[name="durata"]'
