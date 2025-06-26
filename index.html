@@ -163,7 +163,7 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
     <main class="main">
       <section class="hero section" id="hero">
         <figure class="hero__figure">
-          <picture>
+          <!-- <picture>
             <source
               srcset="./images/3d-rendering-blockchain-technology.avif"
               type="image/avif"
@@ -178,8 +178,41 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
               class="hero__img"
               width="1920"
               height="1080"
-              loading="eager"
+              loading="lazy"
               decoding="async"
+            />
+          </picture> -->
+          <picture>
+            <source
+              srcset="
+                ./images/avif-640.avif 640w,
+                ./images/avif-1024.avif 1024w,
+                ./images/avif-1920.avif 1920w
+              "
+              type="image/avif"
+            />
+            <source
+              srcset="
+                ./images/webp-640.webp 640w,
+                ./images/webp-1024.webp 1024w,
+                ./images/webp-1920.webp 1920w
+              "
+              type="image/webp"
+            />
+            <img
+              src="./images/img-1920.jpg"
+              srcset="
+                ./images/img-640.jpg 640w,
+                ./images/img-1024.jpg 1024w,
+                ./images/img-1920.jpg 1920w
+              "
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1920px"
+              alt="Rendering 3D di tecnologie blockchain"
+              width="1920"
+              height="1080"
+              loading="lazy"
+              decoding="async"
+              class="hero__img"
             />
           </picture>
         </figure>
@@ -437,7 +470,12 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
         </div>
 
         <dialog class="modal" id="modal">
-          <form id="personalDataForm" method="POST" netlify netlify-honeypot="bot-field">
+          <form
+            id="personalDataForm"
+            method="POST"
+            netlify
+            netlify-honeypot="bot-field"
+          >
             <fieldset class="personal-data-field">
               <legend class="personal-data-legend">
                 Configurazione personalizzata
@@ -503,9 +541,8 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
             L'integrazione consente la comunicazione diretta tra i tuoi sistemi
             e la piattaforma per l'automazione dell'emissione certificati.
           </p>
-          <button id="closeApiDialog" class="btn ">Chiudi</button>
+          <button id="closeApiDialog" class="btn">Chiudi</button>
         </dialog>
-
       </section>
 
       <section class="reviews section container" id="reviews">
@@ -716,5 +753,27 @@ https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css
     <a href="#" class="scrollup" id="scrollUp">
       <i class="ri-arrow-up-line"></i>
     </a>
+
+    <form
+      name="configuratore"
+      method="POST"
+      netlify
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="configuratore" />
+      <input type="text" name="bot-field" style="display: none" />
+
+      <!-- Campi comuni -->
+      <input type="hidden" name="tipo" />
+      <input type="hidden" name="prezzo" />
+      <input type="hidden" name="numero_corsi" />
+      <input type="hidden" name="studenti" />
+      <input type="hidden" name="durata" />
+      <input type="hidden" name="accesso_api" />
+      <input type="hidden" name="contatto_nome" />
+      <input type="hidden" name="contatto_email" />
+    </form>
   </body>
 </html>
