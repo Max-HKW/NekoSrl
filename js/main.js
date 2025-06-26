@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
       )?.value;
       const form = document.getElementById("feature__form");
       const data = new FormData(form);
-        const value = data.get("opzione_singolo");
+      const value = data.get("opzione_singolo");
       if (!value) return;
       const numero_corsi = value.split("_")[0];
 
@@ -406,7 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hiddenForm.querySelector('[name="contatto_email"]').value = email || "";
     } else if (tipo === "multipli") {
       const numeroCorsi = step2Content.querySelector(
-        'input[name="numero_corsi"]'
+        'input[name="numero_corsi"]:checked'
       )?.value;
       const studenti = document.querySelector(
         '#feature__form input[name="studenti"]'
