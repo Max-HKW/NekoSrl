@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
         createCheckBox("opzione_singolo", "10_100", "10 anni")
       );
       step2Content.appendChild(
-        createCheckBox("opzione_singolo", "10_250", "100 anni")
+        createCheckBox("opzione_singolo", "100_250", "100 anni")
       );
     } else if (type === "multipli") {
       step2Content.appendChild(
@@ -373,11 +373,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const opzioneSingolo = document.querySelector(
         'input[name="opzione_singolo"]:checked'
       )?.value;
-      const form = document.getElementById("feature__form");
-      const dataSingle = new FormData(form);
-      const value = dataSingle.get("opzione_singolo");
+      const form = document.getElementById("feature__form"),
+      const data = new FormData(form);
+        const value = data.get("opzione_singolo");
       if (!value) return;
       const numero_corsi = value.split("_")[0];
+      
       const studenti = document.querySelector(
         '#feature__form input[name="studenti"]'
       )?.value;
