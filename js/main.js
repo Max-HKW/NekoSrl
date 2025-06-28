@@ -397,6 +397,8 @@ document.addEventListener('DOMContentLoaded', () => {
       hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi || '';
       hiddenForm.querySelector('[name="contatto_nome"]').value = nome || '';
       hiddenForm.querySelector('[name="contatto_email"]').value = email || '';
+      hiddenForm.querySelector('[name="messaggio_personalizzato"]').value =
+        'Nessun messaggio';
     } else if (tipo === 'multipli') {
       const form = document.getElementById('feature__form');
       const data = new FormData(form);
@@ -428,6 +430,8 @@ document.addEventListener('DOMContentLoaded', () => {
       hiddenForm.querySelector('[name="contatto_nome"]').value = nome;
       hiddenForm.querySelector('[name="contatto_email"]').value = email;
       hiddenForm.querySelector('[name="prezzo"]').value = price;
+      hiddenForm.querySelector('[name="messaggio_personalizzato"]').value =
+        'Nessun messaggio';
     } else if (tipo === 'personalizzato') {
       const nome = document.querySelector(
         '#personalDataForm input[name="nome"]'
@@ -439,9 +443,10 @@ document.addEventListener('DOMContentLoaded', () => {
         '#personalDataForm textarea'
       )?.value;
 
-      hiddenForm.querySelector('[name="nome"]').value = nome || '';
-      hiddenForm.querySelector('[name="email"]').value = email || '';
-      hiddenForm.querySelector('[name="messaggio"]').value = messaggio || '';
+      hiddenForm.querySelector('[name="contatto_nome"]').value = nome || '';
+      hiddenForm.querySelector('[name="contatto_email"]').value = email || '';
+      hiddenForm.querySelector('[name="messaggio_personalizzato"]').value =
+        messaggio || '';
     }
   }
 
