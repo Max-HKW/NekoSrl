@@ -448,6 +448,11 @@ document.addEventListener('DOMContentLoaded', () => {
         '#personalDataForm textarea'
       )?.value;
 
+      const accessoApi =
+        document.querySelector(
+          '#feature__form input[name="accesso_api"]:checked'
+        )?.value || '';
+
       hiddenForm.querySelector('[name="contatto_nome"]').value = nome || '';
       hiddenForm.querySelector('[name="contatto_email"]').value = email || '';
       hiddenForm.querySelector('[name="messaggio_personalizzato"]').value =
