@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     summaryBox.appendChild(
-      createApiCheckBox('accesso_api', '5000', 'Accesso API')
+      createApiCheckBox('accesso_api', 'Selezionato', 'Accesso API')
     );
 
     summaryBox.appendChild(btnSummary);
