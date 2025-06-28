@@ -452,6 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hiddenForm.querySelector('[name="contatto_email"]').value = email || '';
       hiddenForm.querySelector('[name="messaggio_personalizzato"]').value =
         messaggio || '';
+      hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi;
     }
   }
 
