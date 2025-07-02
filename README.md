@@ -41,6 +41,13 @@ L’obiettivo del progetto è informare, coinvolgere e guidare potenziali client
 
 ---
 
+## 🌐 Sito online
+Il sito è attualmente online e accessibile al seguente indirizzo:
+
+👉 https://configuratorekedos.netlify.app/
+
+---
+
 ## Dipendenze esterne
 
 - [Remixicon](https://remixicon.com/) per le icone.
