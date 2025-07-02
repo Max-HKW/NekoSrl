@@ -489,9 +489,6 @@ document.addEventListener('DOMContentLoaded', () => {
     formCheckboxInput.forEach(checkbox => {
       checkbox.checked = false;
     });
-
-    // confirmBtn.style.display =
-    //   currentFormStep === steps.length - 1 ? "inline-block" : "none";
   }
 
   nextBtn.addEventListener('click', () => {
@@ -528,15 +525,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateNavigation();
   });
-
-  // personalDataForm.addEventListener("submit", (e) => {
-  //   e.preventDefault();
-
-  //   populateHiddenForm();
-  //   document.forms["configuratore"].submit();
-
-  //   conditionalPadding();
-  // });
 
   personalDataForm.addEventListener('submit', async e => {
     e.preventDefault();
@@ -608,12 +596,14 @@ document.addEventListener('DOMContentLoaded', () => {
   prevBtn.addEventListener('click', () => {
     if (currentFormStep === steps.length - 1) {
       currentFormStep = 0;
+      validateStep();
     } else {
       currentFormStep--;
     }
 
     showStep(currentFormStep);
     updateNavigation();
+    validateStep();
 
     successMessage.style.display = 'none';
     btnSummary.style.display = 'inline-block';
@@ -633,20 +623,6 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.disabled = true;
     prevBtn.disabled = true;
   });
-
-  // form.addEventListener("submit", (e) => {
-  //   const btnSummary = document.getElementById("btnSummary");
-  //   e.preventDefault();
-
-  //   populateHiddenForm();
-
-  //   document.forms["configuratore"].submit();
-
-  //   successMessage.style.display = "block";
-  //   form.style.display = "none";
-  //   btnSummary.style.display = "none";
-  //   conditionalPadding();
-  // });
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
