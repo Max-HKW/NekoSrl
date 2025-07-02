@@ -46,7 +46,7 @@
   --z-fixed: 100;
 
   /* SHADOW */
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 
   /* CARDS */
 
@@ -178,9 +178,10 @@ svg {
   top: 0;
   left: 0;
   background-color: var(--white-color);
-  z-index: var(--z-fixed);
+  z-index: 1000;
   box-shadow: var(--shadow);
   transition: background-color 0.3s;
+  /* background-color: blue; */
 }
 
 /* CHANCGE BACKGROUND HEADER */
@@ -1541,6 +1542,7 @@ dialog::backdrop {
 @media (min-width: 1150px) {
   .container {
     margin: 0 auto;
+    max-width: 1320px;
   }
 
   .feature {
