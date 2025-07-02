@@ -1546,7 +1546,7 @@ dialog::backdrop {
 @media (min-width: 1150px) {
   .container {
     margin: 0 auto;
-    max-width: 1320px;
+    /* max-width: 1320px; */
   }
 
   .feature {
@@ -1587,4 +1587,11 @@ dialog::backdrop {
   .about__btn {
     display: inline-block;
   }
+}
+
+
+@media screen and (min-width: 1381px) {
+   .container {
+    max-width: 1320px;
+   }
 }
