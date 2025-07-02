@@ -37,7 +37,7 @@ L’obiettivo del progetto è informare, coinvolgere e guidare potenziali client
 - **JavaScript Vanilla (ES6 Modules)** per l’interattività del configuratore
 - **SwiperJS** per gli slider e le sezioni interattive
 - **Git + GitHub** per il versionamento e la collaborazione
-- **GitHub Pages** per l’hosting gratuito
+- **Netlify** per l’hosting gratuito
 
 ---
 
