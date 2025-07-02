@@ -365,6 +365,10 @@ svg {
   place-items: center;
 }
 
+.hero__content {
+  margin-inline: 1.5rem;
+}
+
 .hero__figure {
   position: absolute;
   inset: 0;
