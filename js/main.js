@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     summaryBox.appendChild(
-      createApiCheckBox('accesso_api', '5000', 'Accesso API')
+      createApiCheckBox('accesso_api', 'Selezionato', 'Accesso API')
     );
 
     summaryBox.appendChild(btnSummary);
@@ -402,6 +402,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (tipo === 'multipli') {
       const form = document.getElementById('feature__form');
       const data = new FormData(form);
+      const courses = data.get('numero_corsi');
+      const students = data.get('studenti');
+      const duration = data.get('durata');
+      const key = `${courses}_${students}_${duration}`;
+      price = pricesMultipleCourses[key] || 0;
 
       const numeroCorsi =
         form.querySelector('input[name="numero_corsi"]:checked')?.value || '';
@@ -443,10 +448,16 @@ document.addEventListener('DOMContentLoaded', () => {
         '#personalDataForm textarea'
       )?.value;
 
+      const accessoApi =
+        document.querySelector(
+          '#feature__form input[name="accesso_api"]:checked'
+        )?.value || '';
+
       hiddenForm.querySelector('[name="contatto_nome"]').value = nome || '';
       hiddenForm.querySelector('[name="contatto_email"]').value = email || '';
       hiddenForm.querySelector('[name="messaggio_personalizzato"]').value =
         messaggio || '';
+      hiddenForm.querySelector('[name="accesso_api"]').value = accessoApi;
     }
   }
 
