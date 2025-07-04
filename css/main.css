@@ -155,6 +155,7 @@ svg {
   font-weight: var(--font-semi-bold);
   text-align: center;
 }
+
 .subtitle {
   font-size: var(--h3-font-size);
   font-weight: var(--font-semi-bold);
@@ -393,11 +394,9 @@ svg {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    130deg,
-    rgba(255, 255, 255, 0.65) 25%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background: linear-gradient(130deg,
+      rgba(255, 255, 255, 0.65) 25%,
+      rgba(0, 0, 0, 0) 100%);
   z-index: 1;
   min-height: 400px;
 }
@@ -465,6 +464,7 @@ svg {
   border: none;
   transition: padding 0.3s ease, background 0.3s ease;
   font-size: var(--normal-font-size);
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -514,9 +514,7 @@ svg {
   grid-template-columns: 1fr;
   grid-template-rows: repeat(var(--stacked-card-count), 1fr);
   gap: var(--card-stack-overlap-gap);
-  padding-bottom: calc(
-    var(--stacked-card-count) * var(--card-offset-top-inside)
-  );
+  padding-bottom: calc(var(--stacked-card-count) * var(--card-offset-top-inside));
   position: relative;
 }
 
@@ -593,6 +591,7 @@ svg {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -859,6 +858,7 @@ fieldset.step.active {
   align-items: center;
   width: 100%;
 }
+
 .optionalChoices input {
   display: none;
 }
@@ -867,7 +867,7 @@ fieldset.step.active {
   margin-left: 0.5rem;
 }
 
-.optionalChoices input:checked + .checkmark::after {
+.optionalChoices input:checked+.checkmark::after {
   content: "";
   position: absolute;
   top: 2px;
@@ -917,7 +917,7 @@ fieldset.step.active {
   top: 50%;
 }
 
-.custom-checkbox input:checked ~ .optionalChoices::after {
+.custom-checkbox input:checked~.optionalChoices::after {
   opacity: 1;
   visibility: visible;
   top: 50%;
@@ -977,7 +977,7 @@ fieldset.step.active {
   position: relative;
 }
 
-.custom-checkbox input:checked + .checkmark::after {
+.custom-checkbox input:checked+.checkmark::after {
   content: "";
   position: absolute;
   top: 2px;
@@ -1000,6 +1000,7 @@ fieldset.step.active {
     align-items: flex-start;
   }
 }
+
 .summary {
   display: flex;
   flex-direction: column;
@@ -1014,6 +1015,7 @@ fieldset.step.active {
   /* font-weight: var(--font-semi-bold); */
   width: 100%;
 }
+
 .list-summary:not(:last-child) {
   margin-bottom: 0.5rem;
 }
@@ -1479,7 +1481,7 @@ dialog::backdrop {
   transform: scale(0.8);
 }
 
-.footer__social a > i {
+.footer__social a>i {
   position: relative;
   z-index: 1;
 }
@@ -1569,6 +1571,7 @@ dialog::backdrop {
 
   .hero {
     height: 75vh;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
   }
 
   .about {
@@ -1591,7 +1594,7 @@ dialog::backdrop {
 
 
 @media screen and (min-width: 1381px) {
-   .container {
+  .container {
     max-width: 1320px;
-   }
+  }
 }
