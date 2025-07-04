@@ -573,6 +573,7 @@ svg {
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  line-height: 1.5;
 }
 
 @media (min-width: 768px) {
