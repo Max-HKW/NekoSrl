@@ -639,7 +639,6 @@ svg {
   /* padding-inline: 4rem; */
   position: relative;
   margin: 3.5rem auto;
-  /* transform: scale(.9); */
 }
 
 .feature__steps .feature__circle {
@@ -656,6 +655,7 @@ svg {
   background-color: var(--white-color);
   transition: all 0.2s ease;
   transition-delay: 0s;
+  transform: scale(.8);
 }
 
 .feature__steps .feature__circle.active {
@@ -669,6 +669,17 @@ svg {
   width: 100%;
   background-color: #d2f3e7;
   z-index: -1;
+  transform: scale(.8);
+}
+
+@media (min-width: 768px) {
+  .feature__steps .feature__circle {
+    transform: scale(1);
+  }
+
+  .feature__steps .feature__progress-bar {
+    transform: scale(1);
+  }
 }
 
 .feature__progress-bar .feature__indicator {
@@ -1572,7 +1583,13 @@ dialog::backdrop {
 
   .hero {
     height: 75vh;
-    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+
+  }
+
+  @media (min-width: 1150px) {
+    .hero {
+      clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    }
   }
 
   .about {
